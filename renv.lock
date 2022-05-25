@@ -38,7 +38,9 @@
         "rmarkdown",
         "tinytex",
         "xfun",
-        "yaml"
+        "yaml",
+        "downlit",
+        "xml2"
       ]
     },
     "bslib": {
