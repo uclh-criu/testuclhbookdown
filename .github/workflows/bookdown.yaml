@@ -20,7 +20,19 @@ jobs:
         with:
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-renv@v1
+#      - uses: r-lib/actions/setup-renv@v1
+# replaced with option from https://github.com/EmilHvitfeldt/bookdown-github-actions-netlify/blob/master/.github/workflows/bookdown.yaml
+      - name: Cache Renv packages
+        uses: actions/cache@v1
+        with:
+          path: $HOME/.local/share/renv
+          key: r-${{ hashFiles('renv.lock') }}
+          restore-keys: r-
+
+      - name: Install packages
+        run: |
+          R -e 'install.packages("renv")'
+          R -e 'renv::restore()'
 
       - name: Cache bookdown results
         uses: actions/cache@v2
