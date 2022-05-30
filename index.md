@@ -1,7 +1,7 @@
 --- 
 title: "UCLH Data Science Training Resources"
 author: "Andy South"
-date: "2022-05-26"
+date: "2022-05-30"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -13,7 +13,7 @@ biblio-style: apalike
 csl: chicago-fullnote-bibliography.csl
 ---
 
-# Welcome to UCLH Data Science Fellows program
+# Welcome to the UCLH Data Science Fellows program {-}
 
 The [UCLH learning-datascience repository](https://github.com/uclh-criu/learning-datascience) contains training materials introducing R for the manipulation and visualisation of patient data. It assumes no knowledge of R, but is structured so that those who know some R can also benefit. It starts with a two day course and provides materials to take things further. 
 

@@ -1,3 +1,2 @@
-welcome-to-uclh-data-science-fellows-program
 online-platforms-logins
 in-case-you-also-want-to-install-r-on-a-personal-computer
