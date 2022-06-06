@@ -1,6 +1,6 @@
 # (PART\*) Two day intro to R course {-}
 
-# Initial instructions {-}
+# Initial instructions
 
 Instructions for learners for before & the start of the course. 
 

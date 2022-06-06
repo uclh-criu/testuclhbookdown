@@ -1,4 +1,4 @@
-# UCLH data fellows practical tips {-}
+# UCLH data fellows practical tips
 
 A collection of tips for working with data on UCLH systems.
 
@@ -35,11 +35,11 @@ Save data on Data Science Desktop either within your documents folder or a share
 
 1. within your Documents folder. This can be reached by typing File Explorer into the Windows search. RStudio is setup on Data Science Desktop so that your Documents folder is the 'Home' directory that can be reached by clicking Home at the top left of he Files tab at the lower right.
 
-![](../images/rstudio-files-home.png)
+![](images/rstudio-files-home.png)
 
 2. a shared folder. We have created some network shared folders that we will send you details of. You can find these by clicking on the ShareFS icon on Data Science Desktop.
 
-![](../images/Data-Science-Desktop-ShareFS.png)
+![](images/Data-Science-Desktop-ShareFS.png)
 
 
 ## RStudio projects
@@ -50,23 +50,23 @@ One advantage of RStudio projects is that they help to keep related code and dat
 
 We suggest you create a folder called **rstudioprojects** either in one of the shared folders or in your Home directory on Data Science Desktop and keep all your projects in there. 
 
-![](../images/rstudio-home-projects-folder.png)
+![](images/rstudio-home-projects-folder.png)
 
 **To create a new RStudio project, click :**     
 
 **RStudio, File, New project, New directory, New project, & type in a name, e.g. my-first-project**
 
-![](../images/00-01-new-project.png)
+![](images/00-01-new-project.png)
 
-![](../images/rstudio-new-project2.png)
+![](images/rstudio-new-project2.png)
 
-![](../images/rstudio-new-project3.png)
+![](images/rstudio-new-project3.png)
 
-![](../images/rstudio-new-project4.png)
+![](images/rstudio-new-project4.png)
 
 To be able to create a new RStudio project within a shared folder you may need to create a drive letter (e.g. T:) for that folder to be able to see it in RStudio. Sometime the drive letters get created automatically. If you can't see the shared folder from within RStudio then you can create the drive letter yourself from the windows command prompt. Get to the windows command prompt by typing 'command' into the windows search box at the lower left, then double clicking on the Command prompt app.
 
-![](../images/data-science-desktop-cmd-prompt.png)
+![](images/data-science-desktop-cmd-prompt.png)
 
 That should bring up a black box that you can type something like this into to set a drive letter.
 
@@ -76,7 +76,7 @@ replace **t:** with the drive letter of your choice
 replace **\\sharefs6\UCLH6\DSF-2021-Lymphoma** with the address of the shared folder we have let you know about.    
 the **/persistent:Yes** ensures the drive persists when windows restarts
 
-![](../images/Data-Science Desktop-set-shared-drive-letter.png)
+![](images/Data-Science Desktop-set-shared-drive-letter.png)
 
 Note that if you wish to remove the shared drive letter and redo you can type :    
 

@@ -1,4 +1,4 @@
-# Terminology & acronym dictionary {-}
+# Terminology & acronym dictionary
 
 Links & brief explanation for those working with data on UCLH systems & generally.
 

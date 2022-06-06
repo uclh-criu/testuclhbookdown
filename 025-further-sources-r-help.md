@@ -1,4 +1,4 @@
-# Other sources R health help {-}
+# Other sources R health help
 
 
 [NHSRCommunity](https://nhsrcommunity.com/) Friendly community promoting use of R in the NHS.

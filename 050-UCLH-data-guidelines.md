@@ -1,6 +1,6 @@
 # (PART\*) UCLH data guidelines {-}
 
-# Access to health data at UCLH - 5 safes {-}
+# Access to health data at UCLH - 5 safes
 
 
 <!-- for comments that won't appear online -->
