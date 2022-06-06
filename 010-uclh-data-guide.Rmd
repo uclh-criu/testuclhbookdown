@@ -1,4 +1,4 @@
-# Data at UCLH {-}
+# Data at UCLH
 
 Data entered into EPIC are stored in data warehouses called Caboodle and Clarity.    
 

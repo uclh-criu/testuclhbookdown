@@ -1,4 +1,4 @@
-# UCLH data fellows practical tips {-}
+# UCLH data fellows practical tips
 
 A collection of tips for working with data on UCLH systems.
 
