@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Data at UCLH | UCLH Data Science Training Resources</title>
+<title>Mini examples of solving common issues with R | UCLH Data Science Training Resources</title>
 <meta name="author" content="Andy South">
-<meta name="description" content="Data entered into EPIC are stored in data warehouses called Caboodle and Clarity. These data can be extracted using SQL by members of Information services teams. Extracting data in a format that...">
+<meta name="description" content="0.2 [Can directly link to R scripts from here, but then they will not appear in the search ?]   0.3 [Can add a set of tags fo each example]">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Data at UCLH | UCLH Data Science Training Resources">
+<meta property="og:title" content="Mini examples of solving common issues with R | UCLH Data Science Training Resources">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Data entered into EPIC are stored in data warehouses called Caboodle and Clarity. These data can be extracted using SQL by members of Information services teams. Extracting data in a format that...">
+<meta property="og:description" content="0.2 [Can directly link to R scripts from here, but then they will not appear in the search ?]   0.3 [Can add a set of tags fo each example]">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data at UCLH | UCLH Data Science Training Resources">
-<meta name="twitter:description" content="Data entered into EPIC are stored in data warehouses called Caboodle and Clarity. These data can be extracted using SQL by members of Information services teams. Extracting data in a format that...">
+<meta name="twitter:title" content="Mini examples of solving common issues with R | UCLH Data Science Training Resources">
+<meta name="twitter:description" content="0.2 [Can directly link to R scripts from here, but then they will not appear in the search ?]   0.3 [Can add a set of tags fo each example]">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -44,7 +44,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome to the UCLH Data Science Fellows program</a></li>
-<li><a class="active" href="data-at-uclh.html">Data at UCLH</a></li>
+<li><a class="" href="data-at-uclh.html">Data at UCLH</a></li>
 <li class="book-part">Two day intro to R course</li>
 <li><a class="" href="initial-instructions.html">Initial instructions</a></li>
 <li><a class="" href="intro-to-r.html">Intro to R</a></li>
@@ -52,7 +52,7 @@
 <li class="book-part">Intro to SQL</li>
 <li><a class="" href="introduction-to-sql-for-getting-data-from-uclh-databases.html">Introduction to SQL for getting data from UCLH databases</a></li>
 <li class="book-part">R solutions for common issues</li>
-<li><a class="" href="mini-examples-of-solving-common-issues-with-r.html">Mini examples of solving common issues with R</a></li>
+<li><a class="active" href="mini-examples-of-solving-common-issues-with-r.html">Mini examples of solving common issues with R</a></li>
 <li class="book-part">UCLH data guidelines</li>
 <li><a class="" href="access-to-health-data-at-uclh---5-safes.html">Access to health data at UCLH - 5 safes</a></li>
 <li><a class="" href="uclh-data-fellows-practical-tips.html">UCLH data fellows practical tips</a></li>
@@ -64,48 +64,39 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-at-uclh" class="section level1 unnumbered">
-<h1>Data at UCLH<a class="anchor" aria-label="anchor" href="#data-at-uclh"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="mini-examples-of-solving-common-issues-with-r" class="section level1 unnumbered">
+<h1>Mini examples of solving common issues with R<a class="anchor" aria-label="anchor" href="#mini-examples-of-solving-common-issues-with-r"><i class="fas fa-link"></i></a>
 </h1>
-<p>Data entered into EPIC are stored in data warehouses called Caboodle and Clarity.</p>
-<p>These data can be extracted using SQL by members of Information services teams.</p>
-<p>Extracting data in a format that makes it relatively easy to visualise and analyse may be a complicated process.</p>
-<p>Could we start from something like below to summarise the most commonly requested data and how to use them ?</p>
-<p>The data most frequently used are :</p>
-<ol style="list-style-type: decimal">
-<li>Patient Demographics</li>
-<li>Lab components</li>
-<li>Flowsheets</li>
-<li>Smartdata elements</li>
-<li>Diagnoses</li>
-<li>Medication</li>
-<li>Encounters</li>
-</ol>
-<p>Can we say more about each of the above under headings like this ?</p>
-<p>What are the most commonly requested fields ?
-Patient identifiers (DurableKey vs MRN) and other keys
-Data Codes and where can they be looked up
-Data Labels/Names
-Data Values (are there separate fields for numeric, text values etc.)
-Dates
-Any fields that identify whether values are current</p>
-<p>How best to extract a particular measurement for a cohort ? How/where to look up codes (e.g. from Epic front end or elsewhere).</p>
+<div id="can-directly-link-to-r-scripts-from-here-but-then-they-will-not-appear-in-the-search" class="section level2">
+<h2>
+<span class="header-section-number">0.2</span> [Can directly link to R scripts from here, but then they will not appear in the search ?]<a class="anchor" aria-label="anchor" href="#can-directly-link-to-r-scripts-from-here-but-then-they-will-not-appear-in-the-search"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="can-add-a-set-of-tags-fo-each-example" class="section level2">
+<h2>
+<span class="header-section-number">0.3</span> [Can add a set of tags fo each example]<a class="anchor" aria-label="anchor" href="#can-add-a-set-of-tags-fo-each-example"><i class="fas fa-link"></i></a>
+</h2>
 
+</div>
 </div>
 
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="index.html">Welcome to the UCLH Data Science Fellows program</a></div>
-<div class="next"><a href="initial-instructions.html">Initial instructions</a></div>
+<div class="prev"><a href="introduction-to-sql-for-getting-data-from-uclh-databases.html">Introduction to SQL for getting data from UCLH databases</a></div>
+<div class="next"><a href="access-to-health-data-at-uclh---5-safes.html">Access to health data at UCLH - 5 safes</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#data-at-uclh">Data at UCLH</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#mini-examples-of-solving-common-issues-with-r">Mini examples of solving common issues with R</a></li>
+<li><a class="nav-link" href="#can-directly-link-to-r-scripts-from-here-but-then-they-will-not-appear-in-the-search"><span class="header-section-number">0.2</span> [Can directly link to R scripts from here, but then they will not appear in the search ?]</a></li>
+<li><a class="nav-link" href="#can-add-a-set-of-tags-fo-each-example"><span class="header-section-number">0.3</span> [Can add a set of tags fo each example]</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/010-uclh-data-guide.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/010-uclh-data-guide.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/040-R-solutions-for-common.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/040-R-solutions-for-common.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

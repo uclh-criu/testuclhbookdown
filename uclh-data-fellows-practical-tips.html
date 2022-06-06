@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>UCLH data fellows practical tips | UCLH Data Science Training Resources</title>
+<meta name="author" content="Andy South">
+<meta name="description" content="A collection of tips for working with data on UCLH systems.  Contents UCLH Data Science DesktopWhere to save dataRStudio projectsNaming of files, columns, variables etc.Folder structure within...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="UCLH data fellows practical tips | UCLH Data Science Training Resources">
+<meta property="og:type" content="book">
+<meta property="og:description" content="A collection of tips for working with data on UCLH systems.  Contents UCLH Data Science DesktopWhere to save dataRStudio projectsNaming of files, columns, variables etc.Folder structure within...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UCLH data fellows practical tips | UCLH Data Science Training Resources">
+<meta name="twitter:description" content="A collection of tips for working with data on UCLH systems.  Contents UCLH Data Science DesktopWhere to save dataRStudio projectsNaming of files, columns, variables etc.Folder structure within...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">UCLH Data Science Training Resources</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome to the UCLH Data Science Fellows program</a></li>
+<li><a class="" href="data-at-uclh.html">Data at UCLH</a></li>
+<li class="book-part">Two day intro to R course</li>
+<li><a class="" href="initial-instructions.html">Initial instructions</a></li>
+<li><a class="" href="intro-to-r.html">Intro to R</a></li>
+<li><a class="" href="other-sources-r-health-help.html">Other sources R health help</a></li>
+<li class="book-part">Intro to SQL</li>
+<li><a class="" href="introduction-to-sql-for-getting-data-from-uclh-databases.html">Introduction to SQL for getting data from UCLH databases</a></li>
+<li class="book-part">R solutions for common issues</li>
+<li><a class="" href="mini-examples-of-solving-common-issues-with-r.html">Mini examples of solving common issues with R</a></li>
+<li class="book-part">UCLH data guidelines</li>
+<li><a class="" href="access-to-health-data-at-uclh---5-safes.html">Access to health data at UCLH - 5 safes</a></li>
+<li><a class="active" href="uclh-data-fellows-practical-tips.html">UCLH data fellows practical tips</a></li>
+<li><a class="" href="terminology-acronym-dictionary.html">Terminology &amp; acronym dictionary</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="uclh-data-fellows-practical-tips" class="section level1 unnumbered">
+<h1>UCLH data fellows practical tips<a class="anchor" aria-label="anchor" href="#uclh-data-fellows-practical-tips"><i class="fas fa-link"></i></a>
+</h1>
+<p>A collection of tips for working with data on UCLH systems.</p>
+<!-- for comments that won't appear online -->
+<!-- ? or call it SOP will all know what sop stands for ? -->
+<p>Contents</p>
+<p><a href="uclh-data-fellows-practical-tips.html#uclh-data-science-desktop">UCLH Data Science Desktop</a><br><a href="uclh-data-fellows-practical-tips.html#where-to-save-data">Where to save data</a><br><a href="uclh-data-fellows-practical-tips.html#rstudio-projects">RStudio projects</a><br><a href="#naming-of-files-columns-variables-etc">Naming of files, columns, variables etc.</a><br><a href="uclh-data-fellows-practical-tips.html#folder-structure-within-rstudio-projects">Folder structure within RStudio projects</a><br><a href="uclh-data-fellows-practical-tips.html#secure-transfer-of-data">Secure transfer of data</a></p>
+<p>These tips aim to support you to develop good data practice and make your work more efficient and safer.</p>
+<p>Few of these are hard-and-fast rules. You may have good reasons for doing things differently.</p>
+<p>Most of this assumes that you are using R. If you are using Python that is good too and you will need to adapt.</p>
+<div id="uclh-data-science-desktop" class="section level2">
+<h2>
+<span class="header-section-number">0.11</span> UCLH Data Science Desktop<a class="anchor" aria-label="anchor" href="#uclh-data-science-desktop"><i class="fas fa-link"></i></a>
+</h2>
+<p>Using the UCLH Data Science Desktop allows you to access hospital data securely. R, dbforge for SQL and Python are pre-installed. See the
+<a href="https://github.com/uclh-criu/learning-datascience/blob/master/instructions/01-pre-course-instructions.md">pre-course instructions</a> for details of access.</p>
+</div>
+<div id="where-to-save-data" class="section level2">
+<h2>
+<span class="header-section-number">0.12</span> Where to save data<a class="anchor" aria-label="anchor" href="#where-to-save-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Do not save data on the desktop of Data Science Desktop. It will be lost when your session ends.</p>
+<p>Save data on Data Science Desktop either within your documents folder or a shared folder (and probably within an RStudio project - see below) :</p>
+<ol style="list-style-type: decimal">
+<li>within your Documents folder. This can be reached by typing File Explorer into the Windows search. RStudio is setup on Data Science Desktop so that your Documents folder is the ‘Home’ directory that can be reached by clicking Home at the top left of he Files tab at the lower right.</li>
+</ol>
+<div class="inline-figure"><img src="../images/rstudio-files-home.png"></div>
+<ol start="2" style="list-style-type: decimal">
+<li>a shared folder. We have created some network shared folders that we will send you details of. You can find these by clicking on the ShareFS icon on Data Science Desktop.</li>
+</ol>
+<div class="inline-figure"><img src="../images/Data-Science-Desktop-ShareFS.png"></div>
+</div>
+<div id="rstudio-projects" class="section level2">
+<h2>
+<span class="header-section-number">0.13</span> RStudio projects<a class="anchor" aria-label="anchor" href="#rstudio-projects"><i class="fas fa-link"></i></a>
+</h2>
+<p>A good way of organising your own R work is by using RStudio projects. An Rstudio project is a folder than can contain both code and data files and has a <code>.Rproj</code> file that saves your settings.</p>
+<p>One advantage of RStudio projects is that they help to keep related code and data together in one place.</p>
+<p>We suggest you create a folder called <strong>rstudioprojects</strong> either in one of the shared folders or in your Home directory on Data Science Desktop and keep all your projects in there.</p>
+<div class="inline-figure"><img src="../images/rstudio-home-projects-folder.png"></div>
+<p><strong>To create a new RStudio project, click :</strong></p>
+<p><strong>RStudio, File, New project, New directory, New project, &amp; type in a name, e.g. my-first-project</strong></p>
+<div class="inline-figure"><img src="../images/00-01-new-project.png"></div>
+<div class="inline-figure"><img src="../images/rstudio-new-project2.png"></div>
+<div class="inline-figure"><img src="../images/rstudio-new-project3.png"></div>
+<div class="inline-figure"><img src="../images/rstudio-new-project4.png"></div>
+<p>To be able to create a new RStudio project within a shared folder you may need to create a drive letter (e.g. T:) for that folder to be able to see it in RStudio. Sometime the drive letters get created automatically. If you can’t see the shared folder from within RStudio then you can create the drive letter yourself from the windows command prompt. Get to the windows command prompt by typing ‘command’ into the windows search box at the lower left, then double clicking on the Command prompt app.</p>
+<div class="inline-figure"><img src="../images/data-science-desktop-cmd-prompt.png"></div>
+<p>That should bring up a black box that you can type something like this into to set a drive letter.</p>
+<p><strong>net use t: \sharefs66-2021-Lymphoma /persistent:Yes</strong></p>
+<p>replace <strong>t:</strong> with the drive letter of your choice<br>
+replace <strong>\sharefs66-2021-Lymphoma</strong> with the address of the shared folder we have let you know about.<br>
+the <strong>/persistent:Yes</strong> ensures the drive persists when windows restarts</p>
+<div class="inline-figure"><img src="../images/Data-Science%20Desktop-set-shared-drive-letter.png"></div>
+<p>Note that if you wish to remove the shared drive letter and redo you can type :</p>
+<p><strong>net use t: /delete</strong></p>
+<p>Once the drive letter has been created you should be able to browse to it when you are creating a new RStudio project with :</p>
+<p><strong>RStudio, File, New project, New directory, New project, &amp; type in a name, e.g. my-first-project</strong></p>
+<p>More <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">reasons for using RStudio projects</a> are outlined here by Jenny Bryan where she threatens to set on fire the computer of people who start their R scripts with something like setwd(“C:/Users/jenny/”)</p>
+</div>
+<div id="naming-of-files-columns-variables-etc." class="section level2">
+<h2>
+<span class="header-section-number">0.14</span> Naming of files, columns, variables etc.<a class="anchor" aria-label="anchor" href="#naming-of-files-columns-variables-etc."><i class="fas fa-link"></i></a>
+</h2>
+<p>It is good to have a system for naming things. Various systems are available.</p>
+<p>Many recommend to <strong>avoid spaces, accents, capital letters and special characters in names</strong>.</p>
+<p>This is a simple system we recommend :</p>
+<p>File and folder names like this using <strong>-</strong> to separate words :<br><strong>my-usefully-named-file.txt</strong><br><strong>2022-02-patient-data-myeloma.csv</strong><br><strong>my-usefully-named-r-script.r</strong></p>
+<p>Column names, object and function names in R using **_** to separate words :<br><strong>weight_kg</strong><br><strong>n_patients</strong></p>
+</div>
+<div id="folder-structure-within-rstudio-projects" class="section level2">
+<h2>
+<span class="header-section-number">0.15</span> Folder structure within RStudio projects<a class="anchor" aria-label="anchor" href="#folder-structure-within-rstudio-projects"><i class="fas fa-link"></i></a>
+</h2>
+<p>When you create a blank RStudio project it has no internal folders. Carefully considering the folder structure can make your life much easier later.</p>
+<p>For a small starting project. It can be simplest just to separate code and data.</p>
+<p>For this we suggest the following internal folders :</p>
+<p><strong>data-raw/</strong><br><strong>data/</strong></p>
+<p>data-raw/ is for data that you have obtained (e.g. csv or xls) and you should keep it unmodified.<br>
+data/ is for data that you are using yourself and may have modified. It could bs .csv or saved from R as .rds</p>
+<p>If you have sql code add this :<br><strong>sql/</strong></p>
+<p>You can then store R scripts or RMarkdown files in the home directory of the project.</p>
+<p>This is similar to the <a href="https://rfortherestofus.com/2021/08/rstudio-project-structure/">structure recommended by rfortherestofus</a>, except that he also suggests having an <strong>R/</strong> folder to contain R scripts that can be used from within different RMarkdown documents.</p>
+<p>Within this structure you can have files named something like this in the home directory of the project in the sequence that they need to be run. These could also be .Rmd files.<br>
+0-get-data.R<br>
+1-clean-data.R<br>
+2-plot-data.R<br>
+3-model-data.R</p>
+<p>For larger projects you may want to have folders named similarly to the files above.</p>
+<p>You may also want to create folders for outputs of the project like <strong>plots/</strong> or <strong>tables/</strong>.</p>
+</div>
+<div id="secure-transfer-of-data" class="section level2">
+<h2>
+<span class="header-section-number">0.16</span> Secure transfer of data<a class="anchor" aria-label="anchor" href="#secure-transfer-of-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>You can receive/send data files (e.g. csv) via your NHS email account. To get files into Data Science Desktop open your email in a web browser in Data Science Desktop and save to a subfolder of your Documents folder as suggested above.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="access-to-health-data-at-uclh---5-safes.html">Access to health data at UCLH - 5 safes</a></div>
+<div class="next"><a href="terminology-acronym-dictionary.html">Terminology &amp; acronym dictionary</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#uclh-data-fellows-practical-tips">UCLH data fellows practical tips</a></li>
+<li><a class="nav-link" href="#uclh-data-science-desktop"><span class="header-section-number">0.11</span> UCLH Data Science Desktop</a></li>
+<li><a class="nav-link" href="#where-to-save-data"><span class="header-section-number">0.12</span> Where to save data</a></li>
+<li><a class="nav-link" href="#rstudio-projects"><span class="header-section-number">0.13</span> RStudio projects</a></li>
+<li><a class="nav-link" href="#naming-of-files-columns-variables-etc."><span class="header-section-number">0.14</span> Naming of files, columns, variables etc.</a></li>
+<li><a class="nav-link" href="#folder-structure-within-rstudio-projects"><span class="header-section-number">0.15</span> Folder structure within RStudio projects</a></li>
+<li><a class="nav-link" href="#secure-transfer-of-data"><span class="header-section-number">0.16</span> Secure transfer of data</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/051-UCLH-data-practical-tips.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/051-UCLH-data-practical-tips.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>UCLH Data Science Training Resources</strong>" was written by Andy South. It was last built on 2022-06-06.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
