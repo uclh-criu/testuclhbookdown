@@ -2,7 +2,7 @@ data-at-uclh
 initial-instructions
 online-platforms-logins
 in-case-you-also-want-to-install-r-on-a-personal-computer
-intro-to-r
+course-materials
 other-sources-r-health-help
 sql
 can-directly-link-to-r-scripts-from-here-but-then-they-will-not-appear-in-the-search
