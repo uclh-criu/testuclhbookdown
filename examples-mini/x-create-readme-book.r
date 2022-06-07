@@ -14,12 +14,17 @@
 # uses R to list files, read each mini example and write two lines for each into the readme 
 # I might be able to tweak this to add a links to the files, but would only work from github
 
+library(readr)
+library(stringr)
+
 # list the r files in the folder
 filenames <- list.files("examples-mini","\\.r$",ignore.case=TRUE)
+file_to_write <- "040-R-solutions-for-common.Rmd"
 
 # first few lines for the reame
-text_for_readme <- paste0("# Mini-examples demonstrating coding solutions for patient data\n\n",
-                          "A series of independent, self-contained examples in R scripts in this folder. ",
+text_for_readme <- paste0("# (PART\\*) R solutions for common issues {-}\n\n",
+                          "# Mini-examples demonstrating coding solutions for patient data\n\n",
+                          "A series of independent, self-contained examples in R scripts. ",
                           "Most come from questions asked by clinicians. ",
                           "Each is like a stackoverflow Q&A. ",
                           "They are targetted at clinicians or analysts who are relatively new to R. ", 
@@ -30,7 +35,7 @@ text_for_readme <- paste0("# Mini-examples demonstrating coding solutions for pa
                           "1. create a new [RStudio project from the repository](https://github.com/uclh-criu/learning-datascience/blob/master/instructions/03-instructions-if-self-guided.md#1-download-the-course-materials-from-github-into-an-rstudio-project) to view & run the scripts locally \n",
                           "2. just copy & paste the code from Github into RStudio\n\n",
                           "These examples are in early development and are likely to change, please suggest or submit improvements.\n\n",
-                          "(note to authors : this file is created by x-create-readme.r)\n")
+                          "(note to authors : this file is created & overwritten by x-create-readme-book.r)\n")
 
 # go through each file & create an entry in the readme from the filename
 # and the 2nd line of the file
@@ -46,7 +51,8 @@ for (i in filenames) {
   #line1 <- paste0("## ",i,"\n")
   
   #try creating link to Github location
-  line1 <- paste0("## [",i,"](https://github.com/uclh-criu/learning-datascience/blob/master/examples-mini/",i,")\n")
+  #line1 <- paste0("## [",i,"](https://github.com/uclh-criu/learning-datascience/blob/master/examples-mini/",i,")\n")
+  line1 <- paste0("## [",i,"](https://github.com/andysouth/testuclhbookdown/blob/master/examples-mini/",i,")\n")
   
   #extract the 2nd line description from the file  
   line2 <- read_lines(paste0('examples-mini/',i), skip_empty_rows=TRUE, n_max=1, skip=1)
@@ -59,4 +65,4 @@ for (i in filenames) {
 }
 
 # write all lines to a markdown file (over-writes by default)
-write_lines(text_for_readme, 'examples-mini/_readme-examples-mini.md')
+write_lines(text_for_readme, file_to_write)
