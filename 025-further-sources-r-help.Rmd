@@ -5,8 +5,13 @@
 
 [NHSR on slack](http://nhsrcommunity.slack.com/)
 
-R for Health Data Science book
-Data Csience in a box etc.
+
+[R for Health Data Science book](https://argoshare.is.ed.ac.uk/healthyr_book/)
+
+
+Data Science in a box.
+
+
 Stackoverflow
 ...
 
