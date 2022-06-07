@@ -23,15 +23,15 @@ file_to_write <- "040-R-solutions-for-common.Rmd"
 
 # first few lines for the reame
 text_for_readme <- paste0("# (PART\\*) R solutions for common issues {-}\n\n",
-                          "# Mini-examples demonstrating coding solutions for patient data\n\n",
-                          "A series of independent, self-contained examples in R scripts. ",
+                          "# R solutions for patient data\n\n",
+                          "A series of independent, self-contained mini examples in R scripts. ",
                           "Most come from questions asked by clinicians. ",
                           "Each is like a stackoverflow Q&A. ",
                           "They are targetted at clinicians or analysts who are relatively new to R. ", 
                           "Designed to be modular so that you can use together or in isolation. ",
                           "Encourage you to use [Minimal Reproducible Examples (reprex)](https://stackoverflow.com/help/minimal-reproducible-example) both to help solve issues yourself and when asking questions of colleagues or on stackoverflow.\n\n",
                           "updated ", Sys.Date(), "\n\n",
-                          "To use, either :\n",
+                          "To use, either :\n\n",
                           "1. create a new [RStudio project from the repository](https://github.com/uclh-criu/learning-datascience/blob/master/instructions/03-instructions-if-self-guided.md#1-download-the-course-materials-from-github-into-an-rstudio-project) to view & run the scripts locally \n",
                           "2. just copy & paste the code from Github into RStudio\n\n",
                           "These examples are in early development and are likely to change, please suggest or submit improvements.\n\n",
@@ -52,7 +52,7 @@ for (i in filenames) {
   
   #try creating link to Github location
   #line1 <- paste0("## [",i,"](https://github.com/uclh-criu/learning-datascience/blob/master/examples-mini/",i,")\n")
-  line1 <- paste0("## [",i,"](https://github.com/andysouth/testuclhbookdown/blob/master/examples-mini/",i,")\n")
+  line1 <- paste0("## [",i,"{-}](https://github.com/andysouth/testuclhbookdown/blob/master/examples-mini/",i,")\n")
   
   #extract the 2nd line description from the file  
   line2 <- read_lines(paste0('examples-mini/',i), skip_empty_rows=TRUE, n_max=1, skip=1)
