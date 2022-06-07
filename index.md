@@ -21,6 +21,7 @@ These resources are part of a UCLH fellowship program developing the capacity of
 
 Proposed timeline for fellowship training activities.
 
+Date    | Activity
  ----   | ---------
 August  | Intro to R & good data practice - 2 day course
 ...     | 
