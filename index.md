@@ -1,7 +1,7 @@
 --- 
 title: "UCLH Data Science Training Resources"
 author: "Andy South"
-date: "2022-06-07"
+date: "2022-06-08"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
