@@ -30,7 +30,7 @@ The data most frequently used are :
  
 How best to extract a particular measurement for a cohort ? How/where to look up codes (e.g. from Epic front end or elsewhere).
 
-
+These data are stored in separate tables and may be provided as separate data files or joined as a part of the extraction process.
 
 
 
