@@ -60,6 +60,9 @@ knitr::kable(dfqswide)
 
 [add how to deal with multiple values per patient-question combination either if there is a record-id column or not]
 
+In some cases there can be duplicate values per patient-question combination. This can be because a form was started and not completed for a patient. In that case the warning message from pivot_wider gives an indication of how to detect the duplicates.
+
+
 
 ## Patient Demographics
 
