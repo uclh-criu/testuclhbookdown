@@ -1,0 +1,5 @@
+PatientDurableKey, DisplayName, Name, Value
+1, "Have you experienced symptom A ?","symptom A","no"
+2, "Have you experienced symptom A ?","symptom A","yes"
+1, "Do you have family in UK ?","family in UK","yes"
+2, "Do you have family in UK ?","family in UK","no"
