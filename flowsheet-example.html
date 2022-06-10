@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 Flowsheet example | UCLH Data Science Training Resources</title>
+<meta name="author" content="Andy South">
+<meta name="description" content="[issues : rows to columns, multiple values per cell, long names, joining ] Aim : to summarise questionnaire results captured from flowsheets. A questionnaire where we are expecting one answer per...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Flowsheet example | UCLH Data Science Training Resources">
+<meta property="og:type" content="book">
+<meta property="og:description" content="[issues : rows to columns, multiple values per cell, long names, joining ] Aim : to summarise questionnaire results captured from flowsheets. A questionnaire where we are expecting one answer per...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Flowsheet example | UCLH Data Science Training Resources">
+<meta name="twitter:description" content="[issues : rows to columns, multiple values per cell, long names, joining ] Aim : to summarise questionnaire results captured from flowsheets. A questionnaire where we are expecting one answer per...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">UCLH Data Science Training Resources</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome to the UCLH Data Science Fellows program</a></li>
+<li><a class="" href="data-at-uclh.html"><span class="header-section-number">1</span> Data at UCLH</a></li>
+<li class="book-part">Two day intro to R course</li>
+<li><a class="" href="initial-instructions.html"><span class="header-section-number">2</span> Initial instructions</a></li>
+<li><a class="" href="course-materials.html"><span class="header-section-number">3</span> Course materials</a></li>
+<li><a class="" href="other-sources-r-health-help.html"><span class="header-section-number">4</span> Other sources R health help</a></li>
+<li class="book-part">Intro to SQL</li>
+<li><a class="" href="sql.html"><span class="header-section-number">5</span> SQL</a></li>
+<li class="book-part">R solutions for common issues</li>
+<li><a class="" href="r-solutions-for-patient-data.html"><span class="header-section-number">6</span> R solutions for patient data</a></li>
+<li><a class="active" href="flowsheet-example.html"><span class="header-section-number">7</span> Flowsheet example</a></li>
+<li class="book-part">UCLH data guidelines</li>
+<li><a class="" href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">8</span> Access to health data at UCLH - 5 safes</a></li>
+<li><a class="" href="uclh-data-fellows-practical-tips.html"><span class="header-section-number">9</span> UCLH data fellows practical tips</a></li>
+<li><a class="" href="terminology-acronym-dictionary.html"><span class="header-section-number">10</span> Terminology &amp; acronym dictionary</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/andysouth/testuclhbookdown">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="flowsheet-example" class="section level1">
+<h1>
+<span class="header-section-number">7</span> Flowsheet example<a class="anchor" aria-label="anchor" href="#flowsheet-example"><i class="fas fa-link"></i></a>
+</h1>
+<p>[issues : rows to columns, multiple values per cell, long names, joining ]</p>
+<p>Aim : to summarise questionnaire results captured from flowsheets.</p>
+<p>A questionnaire where we are expecting one answer per patient for each question.</p>
+<p>Starting with two data extractions from Caboodle.</p>
+<ol style="list-style-type: decimal">
+<li>Questionaire results from Flowsheets</li>
+<li>Patient demographics</li>
+</ol>
+<p>Patient cohort was defined in the data extraction by clinic codes and Patient Durable Keys.</p>
+<div id="questionaire-results-from-flowsheets" class="section level2">
+<h2>
+<span class="header-section-number">7.1</span> Questionaire results from flowsheets<a class="anchor" aria-label="anchor" href="#questionaire-results-from-flowsheets"><i class="fas fa-link"></i></a>
+</h2>
+<p>The flowsheet data are extracted in a long format with question identifiers stored in two columns (note that these may be renamed in the sql extraction) :</p>
+<ul>
+<li>
+<strong>DisplayName</strong> contains the text on the original form<br>
+</li>
+<li>
+<strong>Name</strong> contains an identifier that is shorter</li>
+</ul>
+<p>Values are stored in columns :</p>
+<ul>
+<li><strong>Value</strong></li>
+<li>
+<strong>Unit</strong> optional, may not be specified</li>
+</ul>
+<p>It can be useful to widen these data so that each question is stored in its own column and the values per patient are stored in rows.</p>
+<p>To do that widening we can use the <em>pivot_wider</em> function from dplyr. You need to specify which columns the names, values and identifiers come from.</p>
+<p>You may need to decide whether to use the DisplayName or Name of the FlowsheetRow works better for what you want to do. DisplayName may be too long to provide a good column name, but Name may not give you a clear indication of what the value contains.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#library(tidyverse)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></code></pre></div>
+<p>In this first example, where there is just one answer recorded for each question-patient combination the pivot_wider should work fine.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">dfqs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data//qlong1.csv"</span><span class="op">)</span>
+
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">dfqs</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="right">PatientDurableKey</th>
+<th align="left">DisplayName</th>
+<th align="left">Name</th>
+<th align="left">Value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Have you experienced symptom A ?</td>
+<td align="left">symptom A</td>
+<td align="left">no</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">Have you experienced symptom A ?</td>
+<td align="left">symptom A</td>
+<td align="left">yes</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">Do you have family in UK ?</td>
+<td align="left">family in UK</td>
+<td align="left">yes</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">Do you have family in UK ?</td>
+<td align="left">family in UK</td>
+<td align="left">no</td>
+</tr>
+</tbody>
+</table></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dfqswide</span> <span class="op">&lt;-</span> <span class="va">dfqs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span> names_from <span class="op">=</span> <span class="va">DisplayName</span>, 
+                                  values_from <span class="op">=</span> <span class="va">Value</span>, 
+                                  id_cols <span class="op">=</span> <span class="va">PatientDurableKey</span> <span class="op">)</span>
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">dfqswide</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="23%">
+<col width="42%">
+<col width="34%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">PatientDurableKey</th>
+<th align="left">Have you experienced symptom A ?</th>
+<th align="left">Do you have family in UK ?</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+</tr>
+</tbody>
+</table></div>
+<p>[add how to deal with multiple values per patient-question combination either if there is a record-id column or not]</p>
+<p>In some cases there can be duplicate values per patient-question combination. This can be because a form was started and not completed for a patient. In that case the warning message from pivot_wider gives an indication of how to detect the duplicates.</p>
+</div>
+<div id="patient-demographics" class="section level2">
+<h2>
+<span class="header-section-number">7.2</span> Patient Demographics<a class="anchor" aria-label="anchor" href="#patient-demographics"><i class="fas fa-link"></i></a>
+</h2>
+<p>Patient demographics may be provided in a separate table extracted from Caboodle, also with a PatientDurableKey. The shared column can be used to join the two tables together to allow answers to be summarised by demographics.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">dfpatient</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data//patient1.csv"</span><span class="op">)</span>
+
+<span class="va">dfqswidejoin</span> <span class="op">&lt;-</span> <span class="va">dfqswide</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">dfpatient</span>, by<span class="op">=</span><span class="st">"PatientDurableKey"</span><span class="op">)</span>
+
+<span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">dfqswidejoin</span><span class="op">)</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="18%">
+<col width="34%">
+<col width="28%">
+<col width="11%">
+<col width="7%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">PatientDurableKey</th>
+<th align="left">Have you experienced symptom A ?</th>
+<th align="left">Do you have family in UK ?</th>
+<th align="right">AgeInYears</th>
+<th align="left">Gender</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">no</td>
+<td align="left">yes</td>
+<td align="right">25</td>
+<td align="left">Female</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">yes</td>
+<td align="left">no</td>
+<td align="right">56</td>
+<td align="left">Male</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="r-solutions-for-patient-data.html"><span class="header-section-number">6</span> R solutions for patient data</a></div>
+<div class="next"><a href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">8</span> Access to health data at UCLH - 5 safes</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#flowsheet-example"><span class="header-section-number">7</span> Flowsheet example</a></li>
+<li><a class="nav-link" href="#questionaire-results-from-flowsheets"><span class="header-section-number">7.1</span> Questionaire results from flowsheets</a></li>
+<li><a class="nav-link" href="#patient-demographics"><span class="header-section-number">7.2</span> Patient Demographics</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/andysouth/testuclhbookdown/blob/master/042-example-flowsheet.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/andysouth/testuclhbookdown/edit/master/042-example-flowsheet.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>UCLH Data Science Training Resources</strong>" was written by Andy South. It was last built on 2022-06-10.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

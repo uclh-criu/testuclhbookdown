@@ -6,6 +6,9 @@ course-materials
 other-sources-r-health-help
 sql
 r-solutions-for-patient-data
+flowsheet-example
+questionaire-results-from-flowsheets
+patient-demographics
 access-to-health-data-at-uclh---5-safes
 five-safes-at-uclh-overview
 safe-people

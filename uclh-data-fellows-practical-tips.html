@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 8 UCLH data fellows practical tips | UCLH Data Science Training Resources</title>
+<title>Chapter 9 UCLH data fellows practical tips | UCLH Data Science Training Resources</title>
 <meta name="author" content="Andy South">
 <meta name="description" content="A collection of tips for working with data on UCLH systems.  Contents UCLH Data Science DesktopWhere to save dataRStudio projectsNaming of files, columns, variables etc.Folder structure within...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Chapter 8 UCLH data fellows practical tips | UCLH Data Science Training Resources">
+<meta property="og:title" content="Chapter 9 UCLH data fellows practical tips | UCLH Data Science Training Resources">
 <meta property="og:type" content="book">
 <meta property="og:description" content="A collection of tips for working with data on UCLH systems.  Contents UCLH Data Science DesktopWhere to save dataRStudio projectsNaming of files, columns, variables etc.Folder structure within...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 8 UCLH data fellows practical tips | UCLH Data Science Training Resources">
+<meta name="twitter:title" content="Chapter 9 UCLH data fellows practical tips | UCLH Data Science Training Resources">
 <meta name="twitter:description" content="A collection of tips for working with data on UCLH systems.  Contents UCLH Data Science DesktopWhere to save dataRStudio projectsNaming of files, columns, variables etc.Folder structure within...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -53,10 +53,11 @@
 <li><a class="" href="sql.html"><span class="header-section-number">5</span> SQL</a></li>
 <li class="book-part">R solutions for common issues</li>
 <li><a class="" href="r-solutions-for-patient-data.html"><span class="header-section-number">6</span> R solutions for patient data</a></li>
+<li><a class="" href="flowsheet-example.html"><span class="header-section-number">7</span> Flowsheet example</a></li>
 <li class="book-part">UCLH data guidelines</li>
-<li><a class="" href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">7</span> Access to health data at UCLH - 5 safes</a></li>
-<li><a class="active" href="uclh-data-fellows-practical-tips.html"><span class="header-section-number">8</span> UCLH data fellows practical tips</a></li>
-<li><a class="" href="terminology-acronym-dictionary.html"><span class="header-section-number">9</span> Terminology &amp; acronym dictionary</a></li>
+<li><a class="" href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">8</span> Access to health data at UCLH - 5 safes</a></li>
+<li><a class="active" href="uclh-data-fellows-practical-tips.html"><span class="header-section-number">9</span> UCLH data fellows practical tips</a></li>
+<li><a class="" href="terminology-acronym-dictionary.html"><span class="header-section-number">10</span> Terminology &amp; acronym dictionary</a></li>
 </ul>
 
         <div class="book-extra">
@@ -66,7 +67,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="uclh-data-fellows-practical-tips" class="section level1">
 <h1>
-<span class="header-section-number">8</span> UCLH data fellows practical tips<a class="anchor" aria-label="anchor" href="#uclh-data-fellows-practical-tips"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9</span> UCLH data fellows practical tips<a class="anchor" aria-label="anchor" href="#uclh-data-fellows-practical-tips"><i class="fas fa-link"></i></a>
 </h1>
 <p>A collection of tips for working with data on UCLH systems.</p>
 <!-- for comments that won't appear online -->
@@ -78,14 +79,14 @@
 <p>Most of this assumes that you are using R. If you are using Python that is good too and you will need to adapt.</p>
 <div id="uclh-data-science-desktop" class="section level2">
 <h2>
-<span class="header-section-number">8.1</span> UCLH Data Science Desktop<a class="anchor" aria-label="anchor" href="#uclh-data-science-desktop"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1</span> UCLH Data Science Desktop<a class="anchor" aria-label="anchor" href="#uclh-data-science-desktop"><i class="fas fa-link"></i></a>
 </h2>
 <p>Using the UCLH Data Science Desktop allows you to access hospital data securely. R, dbforge for SQL and Python are pre-installed. See the
 <a href="https://github.com/uclh-criu/learning-datascience/blob/master/instructions/01-pre-course-instructions.md">pre-course instructions</a> for details of access.</p>
 </div>
 <div id="where-to-save-data" class="section level2">
 <h2>
-<span class="header-section-number">8.2</span> Where to save data<a class="anchor" aria-label="anchor" href="#where-to-save-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2</span> Where to save data<a class="anchor" aria-label="anchor" href="#where-to-save-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Do not save data on the desktop of Data Science Desktop. It will be lost when your session ends.</p>
 <p>Save data on Data Science Desktop either within your documents folder or a shared folder (and probably within an RStudio project - see below) :</p>
@@ -100,7 +101,7 @@
 </div>
 <div id="rstudio-projects" class="section level2">
 <h2>
-<span class="header-section-number">8.3</span> RStudio projects<a class="anchor" aria-label="anchor" href="#rstudio-projects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.3</span> RStudio projects<a class="anchor" aria-label="anchor" href="#rstudio-projects"><i class="fas fa-link"></i></a>
 </h2>
 <p>A good way of organising your own R work is by using RStudio projects. An Rstudio project is a folder than can contain both code and data files and has a <code>.Rproj</code> file that saves your settings.</p>
 <p>One advantage of RStudio projects is that they help to keep related code and data together in one place.</p>
@@ -128,7 +129,7 @@ the <strong>/persistent:Yes</strong> ensures the drive persists when windows res
 </div>
 <div id="naming-of-files-columns-variables-etc." class="section level2">
 <h2>
-<span class="header-section-number">8.4</span> Naming of files, columns, variables etc.<a class="anchor" aria-label="anchor" href="#naming-of-files-columns-variables-etc."><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.4</span> Naming of files, columns, variables etc.<a class="anchor" aria-label="anchor" href="#naming-of-files-columns-variables-etc."><i class="fas fa-link"></i></a>
 </h2>
 <p>It is good to have a system for naming things. Various systems are available.</p>
 <p>Many recommend to <strong>avoid spaces, accents, capital letters and special characters in names</strong>.</p>
@@ -138,7 +139,7 @@ the <strong>/persistent:Yes</strong> ensures the drive persists when windows res
 </div>
 <div id="folder-structure-within-rstudio-projects" class="section level2">
 <h2>
-<span class="header-section-number">8.5</span> Folder structure within RStudio projects<a class="anchor" aria-label="anchor" href="#folder-structure-within-rstudio-projects"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.5</span> Folder structure within RStudio projects<a class="anchor" aria-label="anchor" href="#folder-structure-within-rstudio-projects"><i class="fas fa-link"></i></a>
 </h2>
 <p>When you create a blank RStudio project it has no internal folders. Carefully considering the folder structure can make your life much easier later.</p>
 <p>For a small starting project. It can be simplest just to separate code and data.</p>
@@ -159,25 +160,25 @@ data/ is for data that you are using yourself and may have modified. It could bs
 </div>
 <div id="secure-transfer-of-data" class="section level2">
 <h2>
-<span class="header-section-number">8.6</span> Secure transfer of data<a class="anchor" aria-label="anchor" href="#secure-transfer-of-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.6</span> Secure transfer of data<a class="anchor" aria-label="anchor" href="#secure-transfer-of-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>You can receive/send data files (e.g. csv) via your NHS email account. To get files into Data Science Desktop open your email in a web browser in Data Science Desktop and save to a subfolder of your Documents folder as suggested above.</p>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">7</span> Access to health data at UCLH - 5 safes</a></div>
-<div class="next"><a href="terminology-acronym-dictionary.html"><span class="header-section-number">9</span> Terminology &amp; acronym dictionary</a></div>
+<div class="prev"><a href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">8</span> Access to health data at UCLH - 5 safes</a></div>
+<div class="next"><a href="terminology-acronym-dictionary.html"><span class="header-section-number">10</span> Terminology &amp; acronym dictionary</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#uclh-data-fellows-practical-tips"><span class="header-section-number">8</span> UCLH data fellows practical tips</a></li>
-<li><a class="nav-link" href="#uclh-data-science-desktop"><span class="header-section-number">8.1</span> UCLH Data Science Desktop</a></li>
-<li><a class="nav-link" href="#where-to-save-data"><span class="header-section-number">8.2</span> Where to save data</a></li>
-<li><a class="nav-link" href="#rstudio-projects"><span class="header-section-number">8.3</span> RStudio projects</a></li>
-<li><a class="nav-link" href="#naming-of-files-columns-variables-etc."><span class="header-section-number">8.4</span> Naming of files, columns, variables etc.</a></li>
-<li><a class="nav-link" href="#folder-structure-within-rstudio-projects"><span class="header-section-number">8.5</span> Folder structure within RStudio projects</a></li>
-<li><a class="nav-link" href="#secure-transfer-of-data"><span class="header-section-number">8.6</span> Secure transfer of data</a></li>
+<li><a class="nav-link" href="#uclh-data-fellows-practical-tips"><span class="header-section-number">9</span> UCLH data fellows practical tips</a></li>
+<li><a class="nav-link" href="#uclh-data-science-desktop"><span class="header-section-number">9.1</span> UCLH Data Science Desktop</a></li>
+<li><a class="nav-link" href="#where-to-save-data"><span class="header-section-number">9.2</span> Where to save data</a></li>
+<li><a class="nav-link" href="#rstudio-projects"><span class="header-section-number">9.3</span> RStudio projects</a></li>
+<li><a class="nav-link" href="#naming-of-files-columns-variables-etc."><span class="header-section-number">9.4</span> Naming of files, columns, variables etc.</a></li>
+<li><a class="nav-link" href="#folder-structure-within-rstudio-projects"><span class="header-section-number">9.5</span> Folder structure within RStudio projects</a></li>
+<li><a class="nav-link" href="#secure-transfer-of-data"><span class="header-section-number">9.6</span> Secure transfer of data</a></li>
 </ul>
 
       <div class="book-extra">
@@ -195,7 +196,7 @@ data/ is for data that you are using yourself and may have modified. It could bs
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>UCLH Data Science Training Resources</strong>" was written by Andy South. It was last built on 2022-06-08.</p>
+    <p>"<strong>UCLH Data Science Training Resources</strong>" was written by Andy South. It was last built on 2022-06-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
