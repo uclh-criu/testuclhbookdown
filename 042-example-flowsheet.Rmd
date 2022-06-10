@@ -1,6 +1,6 @@
 # Flowsheet example
 
-[issues : rows to columns, ?multiple values per cell, long names, joining ]
+[issues : rows to columns, multiple values per cell, long names, joining ]
 
 Aim : to summarise questionnaire results captured from flowsheets.
 
@@ -37,7 +37,11 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 ```{r libraries}
-library(tidyverse)
+#library(tidyverse)
+library(readr)
+library(dplyr)
+library(tidyr)
+
 ```
 
 In this first example, where there is just one answer recorded for each question-patient combination the pivot_wider should work fine.
