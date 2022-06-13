@@ -1,5 +1,11 @@
 #SETUP.md
 
+## on update
+add any packages to DESCRIPTION
+renv::snapshot()
+beware that seems that there are a load of packages incl. tidyverse, googlesheets etc. in the renv lockfile that aren't used in the book pages - maybe some are from the slides and don't need to be there.
+This which is supposed to just query DESCRIPTION excludes them.
+renv::snapshot(type="explicit")
 
 ## Steps taken to create the site.
 
@@ -8,7 +14,7 @@ renv::snapshot()
 replaced the package installation bit in bookdown.yaml with an older one (still using renv) then it started working
 no need to commit a gh-pages branch locally first
 from Github repo enable pages
-
+added DESCRIPTION file for dependencies
 
 Chapter numbering.
 
