@@ -1,0 +1,174 @@
+# Lymphoma example
+
+A walk through of steps taken to analyse some Lymphoma data.
+
+The broad aim was to look at relapse and survival for different types of Lymphoma related to the stage at initial diagnosis. 
+
+Starting with two data extractions from Caboodle and Clarity respectively.
+
+1. Cancer staging form data.
+2. Oncology History (a series of events).
+
+## cancer staging data
+
+The cancer staging form data also contains fields from Patient and Problem List tables joined by the original sql extraction.
+
+We wanted to get to one row per patient with the stage at initial diagnosis.
+
+Data were read in from an excel file :
+
+
+```r
+dfstaging <- read_excel(filename_staging) #, col_types=c("text"))
+
+names(dfstaging)
+
+# [1] "DurableKey"             "PrimaryMrn"             "Problem List Diagnosis" "DiagnosisKey"          
+# [5] "StageDateKey"           "Classification"         "StageGroup"             "StageDescription"      
+# [9] "DateKey"                "SmartDataElementEpicId" "AttributeType"          "StringValue"           
+# [13] "NumericValue"           "DateValue" 
+```
+
+There were multiple forms per patient and each has a data in "StageDateKey". We added an index for the form number per patient to be able to filter just the first form later.
+
+
+```r
+dfstaging <- dfstaging %>%
+  group_by(DurableKey) %>% 
+  #dense_rank assigns 1,2,3 etc to each form date starting low
+  mutate(patient_form_num = dense_rank(StageDateKey)) %>% 
+  ungroup() %>% 
+  arrange(DurableKey, StageDateKey)
+```
+
+The staging data has variable names in AttributeType and values in either StringValue (almost entirely), NumericValue or DateValue.
+
+Can get variables into their own columns using pivot_wider with StageDateKey as an extra identifier.
+
+
+```r
+# even when using StageDateKey there are a few multiple records
+# due to 1 partially completed form 
+# & "symptoms at diagnosis (B symptoms)" that can have multiple records per form
+# this modified code from pivot_wider warning to remove duplicates
+# removes 33 of 5000 rows
+dfstaging2 <- dfstaging %>%
+  dplyr::group_by(DurableKey, StageDateKey, AttributeType) %>%
+  dplyr::mutate(n = dplyr::n(), .groups = "drop") %>%
+  dplyr::filter(n == 1L) 
+
+dfstagewide <- pivot_wider(dfstaging2, 
+                           names_from = AttributeType, 
+                           values_from = StringValue, 
+                           id_cols=c(PrimaryMrn, DurableKey, StageDateKey, patient_form_num) )
+
+# filter the first form for each patient
+dfstagewide_form1 <- dfstagewide %>% 
+  filter(patient_form_num == 1)
+
+# replace spaces with _ in variable names to make easier to deal with
+names(dfstagewide_form1) <- names(dfstagewide_form1) %>% 
+   #replace spaces with _
+   str_replace_all("\\s", "_")
+
+# now the data can be filtered by lymphoma_type
+table(dfstagewide_form1$lymphoma_type)
+# Diffuse large B-cell lymphoma           Follicular lymphoma 
+# 141                                     118 
+# Hodgkin lymphoma          Mantle cell lymphoma 
+# 76                            32 
+# Marginal zone lymphoma    Peripheral T-cell lymphoma 
+# 42                             7 
+# Small lymphocytic leukemia                       Unknown 
+# 1                            17 
+```
+
+## oncology history data
+
+Oncology history has a series of events classified by Event_Category.
+
+
+```r
+
+filename_oh <- "data-raw//Lymphoma_Oncology_History_Full_Extract_2022-03-30.csv"
+dfoncology <- read_csv(filename_oh)
+
+names(dfoncology)
+# [1] "PAT_MRN_ID"                   "Event_Category"               "PRB_EVENT_STDATE_DT"         
+# [4] "PRB_EVENT_ENDATE_DT"          "NOTE_CSN_ID"                  "NOTE_TEXT"                   
+# [7] "PRB_EVENT_INDEX"              "PROBLEM_EVENT_AUTO_UPDATE_YN"
+
+unique(dfoncology$Event_Category)
+# [1] "Initial Diagnosis"              "Cancer Staged"                  "Chemotherapy"                  
+# [4] "No evidence of disease"         "Progression"                    "Relapse"                       
+# [7] "Other"                          "Adverse Reaction"               "Death"                         
+# [10] "Radiotherapy"                   "Supportive Treatment"           "Surgery"                       
+# [13] "Research Study Participant"     "Bone Marrow Transplant Event"   "End of Therapy"                
+# [16] "Re-Staged"                      "Palliative Care"                "Biopsy"                        
+# [19] "Imaging"                        "Multi Disciplinary Meeting"     "Immunotherapy"                 
+# [22] "Targeted Therapy"               "Previous External Chemotherapy"
+
+```
+
+
+We can arrange the events in chronological order by patient to look at the data, and count the events of the same type per patient to see that there can be repeats.
+
+
+```r
+#dates are in oh_date_start converted from "PRB_EVENT_STDATE_DT" from oncology history 
+
+#first filter & order & look at the data
+dfevent_order <- dfoncology_dlbcl %>% 
+  #filter(Event_Category=="No evidence of disease" | Event_Category=="Initial Diagnosis") %>%
+  arrange(PAT_MRN_ID, oh_date_start)
+
+#check whether there are multiple events
+#yes, can be up to 3 relapse, progression or no evidence
+dfcheck_events <- dfoncology_dlbcl %>%
+  group_by(PAT_MRN_ID) %>% 
+  summarise(no_evidence=sum(Event_Category=="No evidence of disease"),
+            initial_diagnosis=sum(Event_Category=="Initial Diagnosis"),
+            relapse=sum(Event_Category=="Relapse"),
+            progression=sum(Event_Category=="Progression"))
+```
+
+### To calculate the time to relapse from remission.
+
+This filters events that indicate remission or relapse, orders them for each patient and calculates the time from each event to the next one. 
+Then for each patient it checks whether a relapse event occurs immediately after a remission one. It classifies survival in a way that can later be used in a Kaplan Meier survival plot using the survminer package.
+
+
+```r
+
+# this is time from no_evidence to either relapse, progression or death
+# function requires oncology history dataframe with converted date columns
+time_to_relapse <- function(df1)
+{
+  df1 %>%
+    # filter out event types
+    filter(Event_Category %in% c("No evidence of disease","Progression","Relapse","Death")) %>% 
+    # arrange events in date order
+    arrange(PAT_MRN_ID, oh_date_start) %>%
+    group_by(PAT_MRN_ID) %>% 
+    # calculate days to next event - lower down it replaces NAs for survival with interval to last date in file
+    mutate(days_to_next = lead(oh_date_start) - oh_date_start,
+           next_cat = lead(Event_Category)) %>% 
+    ungroup() %>%
+    # filter just the records starting with CMR (survival will have NA in next_cat)
+    filter(Event_Category=="No evidence of disease") %>% 
+    # survival for KM plots 1=survived, 2=not
+    mutate(survival=if_else(next_cat %in% c("Progression","Relapse","Death"),2,1)) %>% 
+    # survival events have an NA in days_to_next, replace that with time from remission to the max date in the extraction
+    # later replace this with the last clinic appointment for patients who haven't had relapse
+    mutate(days_to_next=if_else(is.na(days_to_next), max(oh_date_start,na.rm=TRUE) - oh_date_start, days_to_next)) 
+}
+
+# call function above
+dftime_to_relapse <- time_to_relapse(dfoncology_dlbcl)
+
+```
+
+These data can be joined onto the widened staging data to be able to look at survival by different Lymphoma types.
+
+
+

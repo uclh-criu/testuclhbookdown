@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 8 Lymphoma example | UCLH Data Science Training Resources</title>
+<meta name="author" content="Andy South">
+<meta name="description" content="A walk through of steps taken to analyse some Lymphoma data. The broad aim was to look at relapse and survival for different types of Lymphoma related to the stage at initial diagnosis. Starting...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Chapter 8 Lymphoma example | UCLH Data Science Training Resources">
+<meta property="og:type" content="book">
+<meta property="og:description" content="A walk through of steps taken to analyse some Lymphoma data. The broad aim was to look at relapse and survival for different types of Lymphoma related to the stage at initial diagnosis. Starting...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 8 Lymphoma example | UCLH Data Science Training Resources">
+<meta name="twitter:description" content="A walk through of steps taken to analyse some Lymphoma data. The broad aim was to look at relapse and survival for different types of Lymphoma related to the stage at initial diagnosis. Starting...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">UCLH Data Science Training Resources</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome to the UCLH Data Science Fellows program</a></li>
+<li><a class="" href="data-at-uclh.html"><span class="header-section-number">1</span> Data at UCLH</a></li>
+<li class="book-part">Two day intro to R course</li>
+<li><a class="" href="initial-instructions.html"><span class="header-section-number">2</span> Initial instructions</a></li>
+<li><a class="" href="course-materials.html"><span class="header-section-number">3</span> Course materials</a></li>
+<li><a class="" href="other-sources-r-health-help.html"><span class="header-section-number">4</span> Other sources R health help</a></li>
+<li class="book-part">Intro to SQL</li>
+<li><a class="" href="sql.html"><span class="header-section-number">5</span> SQL</a></li>
+<li class="book-part">R solutions for common issues</li>
+<li><a class="" href="r-solutions-for-patient-data.html"><span class="header-section-number">6</span> R solutions for patient data</a></li>
+<li><a class="" href="flowsheet-example.html"><span class="header-section-number">7</span> Flowsheet example</a></li>
+<li><a class="active" href="lymphoma-example.html"><span class="header-section-number">8</span> Lymphoma example</a></li>
+<li class="book-part">UCLH data guidelines</li>
+<li><a class="" href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">9</span> Access to health data at UCLH - 5 safes</a></li>
+<li><a class="" href="uclh-data-fellows-practical-tips.html"><span class="header-section-number">10</span> UCLH data fellows practical tips</a></li>
+<li><a class="" href="terminology-acronym-dictionary.html"><span class="header-section-number">11</span> Terminology &amp; acronym dictionary</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/andysouth/testuclhbookdown">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lymphoma-example" class="section level1">
+<h1>
+<span class="header-section-number">8</span> Lymphoma example<a class="anchor" aria-label="anchor" href="#lymphoma-example"><i class="fas fa-link"></i></a>
+</h1>
+<p>A walk through of steps taken to analyse some Lymphoma data.</p>
+<p>The broad aim was to look at relapse and survival for different types of Lymphoma related to the stage at initial diagnosis.</p>
+<p>Starting with two data extractions from Caboodle and Clarity respectively.</p>
+<ol style="list-style-type: decimal">
+<li>Cancer staging form data.</li>
+<li>Oncology History (a series of events).</li>
+</ol>
+<div id="cancer-staging-data" class="section level2">
+<h2>
+<span class="header-section-number">8.1</span> cancer staging data<a class="anchor" aria-label="anchor" href="#cancer-staging-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>The cancer staging form data also contains fields from Patient and Problem List tables joined by the original sql extraction.</p>
+<p>We wanted to get to one row per patient with the stage at initial diagnosis.</p>
+<p>Data were read in from an excel file :</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dfstaging</span> <span class="op">&lt;-</span> <span class="fu">read_excel</span><span class="op">(</span><span class="va">filename_staging</span><span class="op">)</span> <span class="co">#, col_types=c("text"))</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dfstaging</span><span class="op">)</span>
+
+<span class="co"># [1] "DurableKey"             "PrimaryMrn"             "Problem List Diagnosis" "DiagnosisKey"          </span>
+<span class="co"># [5] "StageDateKey"           "Classification"         "StageGroup"             "StageDescription"      </span>
+<span class="co"># [9] "DateKey"                "SmartDataElementEpicId" "AttributeType"          "StringValue"           </span>
+<span class="co"># [13] "NumericValue"           "DateValue" </span></code></pre></div>
+<p>There were multiple forms per patient and each has a data in “StageDateKey”. We added an index for the form number per patient to be able to filter just the first form later.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dfstaging</span> <span class="op">&lt;-</span> <span class="va">dfstaging</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">DurableKey</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="co">#dense_rank assigns 1,2,3 etc to each form date starting low</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>patient_form_num <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/ranking.html">dense_rank</a></span><span class="op">(</span><span class="va">StageDateKey</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">DurableKey</span>, <span class="va">StageDateKey</span><span class="op">)</span></code></pre></div>
+<p>The staging data has variable names in AttributeType and values in either StringValue (almost entirely), NumericValue or DateValue.</p>
+<p>Can get variables into their own columns using pivot_wider with StageDateKey as an extra identifier.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># even when using StageDateKey there are a few multiple records</span>
+<span class="co"># due to 1 partially completed form </span>
+<span class="co"># &amp; "symptoms at diagnosis (B symptoms)" that can have multiple records per form</span>
+<span class="co"># this modified code from pivot_wider warning to remove duplicates</span>
+<span class="co"># removes 33 of 5000 rows</span>
+<span class="va">dfstaging2</span> <span class="op">&lt;-</span> <span class="va">dfstaging</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">DurableKey</span>, <span class="va">StageDateKey</span>, <span class="va">AttributeType</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">==</span> <span class="fl">1L</span><span class="op">)</span> 
+
+<span class="va">dfstagewide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span><span class="va">dfstaging2</span>, 
+                           names_from <span class="op">=</span> <span class="va">AttributeType</span>, 
+                           values_from <span class="op">=</span> <span class="va">StringValue</span>, 
+                           id_cols<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">PrimaryMrn</span>, <span class="va">DurableKey</span>, <span class="va">StageDateKey</span>, <span class="va">patient_form_num</span><span class="op">)</span> <span class="op">)</span>
+
+<span class="co"># filter the first form for each patient</span>
+<span class="va">dfstagewide_form1</span> <span class="op">&lt;-</span> <span class="va">dfstagewide</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">patient_form_num</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
+
+<span class="co"># replace spaces with _ in variable names to make easier to deal with</span>
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dfstagewide_form1</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dfstagewide_form1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+   <span class="co">#replace spaces with _</span>
+   <span class="fu">str_replace_all</span><span class="op">(</span><span class="st">"\\s"</span>, <span class="st">"_"</span><span class="op">)</span>
+
+<span class="co"># now the data can be filtered by lymphoma_type</span>
+<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">dfstagewide_form1</span><span class="op">$</span><span class="va">lymphoma_type</span><span class="op">)</span>
+<span class="co"># Diffuse large B-cell lymphoma           Follicular lymphoma </span>
+<span class="co"># 141                                     118 </span>
+<span class="co"># Hodgkin lymphoma          Mantle cell lymphoma </span>
+<span class="co"># 76                            32 </span>
+<span class="co"># Marginal zone lymphoma    Peripheral T-cell lymphoma </span>
+<span class="co"># 42                             7 </span>
+<span class="co"># Small lymphocytic leukemia                       Unknown </span>
+<span class="co"># 1                            17 </span></code></pre></div>
+</div>
+<div id="oncology-history-data" class="section level2">
+<h2>
+<span class="header-section-number">8.2</span> oncology history data<a class="anchor" aria-label="anchor" href="#oncology-history-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Oncology history has a series of events classified by Event_Category.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">filename_oh</span> <span class="op">&lt;-</span> <span class="st">"data-raw//Lymphoma_Oncology_History_Full_Extract_2022-03-30.csv"</span>
+<span class="va">dfoncology</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">filename_oh</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">dfoncology</span><span class="op">)</span>
+<span class="co"># [1] "PAT_MRN_ID"                   "Event_Category"               "PRB_EVENT_STDATE_DT"         </span>
+<span class="co"># [4] "PRB_EVENT_ENDATE_DT"          "NOTE_CSN_ID"                  "NOTE_TEXT"                   </span>
+<span class="co"># [7] "PRB_EVENT_INDEX"              "PROBLEM_EVENT_AUTO_UPDATE_YN"</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dfoncology</span><span class="op">$</span><span class="va">Event_Category</span><span class="op">)</span>
+<span class="co"># [1] "Initial Diagnosis"              "Cancer Staged"                  "Chemotherapy"                  </span>
+<span class="co"># [4] "No evidence of disease"         "Progression"                    "Relapse"                       </span>
+<span class="co"># [7] "Other"                          "Adverse Reaction"               "Death"                         </span>
+<span class="co"># [10] "Radiotherapy"                   "Supportive Treatment"           "Surgery"                       </span>
+<span class="co"># [13] "Research Study Participant"     "Bone Marrow Transplant Event"   "End of Therapy"                </span>
+<span class="co"># [16] "Re-Staged"                      "Palliative Care"                "Biopsy"                        </span>
+<span class="co"># [19] "Imaging"                        "Multi Disciplinary Meeting"     "Immunotherapy"                 </span>
+<span class="co"># [22] "Targeted Therapy"               "Previous External Chemotherapy"</span></code></pre></div>
+<p>We can arrange the events in chronological order by patient to look at the data, and count the events of the same type per patient to see that there can be repeats.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#dates are in oh_date_start converted from "PRB_EVENT_STDATE_DT" from oncology history </span>
+
+<span class="co">#first filter &amp; order &amp; look at the data</span>
+<span class="va">dfevent_order</span> <span class="op">&lt;-</span> <span class="va">dfoncology_dlbcl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="co">#filter(Event_Category=="No evidence of disease" | Event_Category=="Initial Diagnosis") %&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">PAT_MRN_ID</span>, <span class="va">oh_date_start</span><span class="op">)</span>
+
+<span class="co">#check whether there are multiple events</span>
+<span class="co">#yes, can be up to 3 relapse, progression or no evidence</span>
+<span class="va">dfcheck_events</span> <span class="op">&lt;-</span> <span class="va">dfoncology_dlbcl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">PAT_MRN_ID</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>no_evidence<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Event_Category</span><span class="op">==</span><span class="st">"No evidence of disease"</span><span class="op">)</span>,
+            initial_diagnosis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Event_Category</span><span class="op">==</span><span class="st">"Initial Diagnosis"</span><span class="op">)</span>,
+            relapse<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Event_Category</span><span class="op">==</span><span class="st">"Relapse"</span><span class="op">)</span>,
+            progression<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Event_Category</span><span class="op">==</span><span class="st">"Progression"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div id="to-calculate-the-time-to-relapse-from-remission." class="section level3">
+<h3>
+<span class="header-section-number">8.2.1</span> To calculate the time to relapse from remission.<a class="anchor" aria-label="anchor" href="#to-calculate-the-time-to-relapse-from-remission."><i class="fas fa-link"></i></a>
+</h3>
+<p>This filters events that indicate remission or relapse, orders them for each patient and calculates the time from each event to the next one.
+Then for each patient it checks whether a relapse event occurs immediately after a remission one. It classifies survival in a way that can later be used in a Kaplan Meier survival plot using the survminer package.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="co"># this is time from no_evidence to either relapse, progression or death</span>
+<span class="co"># function requires oncology history dataframe with converted date columns</span>
+<span class="va">time_to_relapse</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df1</span><span class="op">)</span>
+<span class="op">{</span>
+  <span class="va">df1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="co"># filter out event types</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Event_Category</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"No evidence of disease"</span>,<span class="st">"Progression"</span>,<span class="st">"Relapse"</span>,<span class="st">"Death"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+    <span class="co"># arrange events in date order</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">PAT_MRN_ID</span>, <span class="va">oh_date_start</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">PAT_MRN_ID</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+    <span class="co"># calculate days to next event - lower down it replaces NAs for survival with interval to last date in file</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>days_to_next <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead</a></span><span class="op">(</span><span class="va">oh_date_start</span><span class="op">)</span> <span class="op">-</span> <span class="va">oh_date_start</span>,
+           next_cat <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead</a></span><span class="op">(</span><span class="va">Event_Category</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="co"># filter just the records starting with CMR (survival will have NA in next_cat)</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Event_Category</span><span class="op">==</span><span class="st">"No evidence of disease"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+    <span class="co"># survival for KM plots 1=survived, 2=not</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>survival<span class="op">=</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">next_cat</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Progression"</span>,<span class="st">"Relapse"</span>,<span class="st">"Death"</span><span class="op">)</span>,<span class="fl">2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+    <span class="co"># survival events have an NA in days_to_next, replace that with time from remission to the max date in the extraction</span>
+    <span class="co"># later replace this with the last clinic appointment for patients who haven't had relapse</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>days_to_next<span class="op">=</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">days_to_next</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">oh_date_start</span>,na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op">-</span> <span class="va">oh_date_start</span>, <span class="va">days_to_next</span><span class="op">)</span><span class="op">)</span> 
+<span class="op">}</span>
+
+<span class="co"># call function above</span>
+<span class="va">dftime_to_relapse</span> <span class="op">&lt;-</span> <span class="fu">time_to_relapse</span><span class="op">(</span><span class="va">dfoncology_dlbcl</span><span class="op">)</span></code></pre></div>
+<p>These data can be joined onto the widened staging data to be able to look at survival by different Lymphoma types.</p>
+
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="flowsheet-example.html"><span class="header-section-number">7</span> Flowsheet example</a></div>
+<div class="next"><a href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">9</span> Access to health data at UCLH - 5 safes</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#lymphoma-example"><span class="header-section-number">8</span> Lymphoma example</a></li>
+<li><a class="nav-link" href="#cancer-staging-data"><span class="header-section-number">8.1</span> cancer staging data</a></li>
+<li>
+<a class="nav-link" href="#oncology-history-data"><span class="header-section-number">8.2</span> oncology history data</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#to-calculate-the-time-to-relapse-from-remission."><span class="header-section-number">8.2.1</span> To calculate the time to relapse from remission.</a></li></ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/andysouth/testuclhbookdown/blob/master/043-example-lymphoma.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/andysouth/testuclhbookdown/edit/master/043-example-lymphoma.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>UCLH Data Science Training Resources</strong>" was written by Andy South. It was last built on 2022-06-13.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

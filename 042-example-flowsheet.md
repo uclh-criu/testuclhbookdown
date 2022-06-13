@@ -1,21 +1,19 @@
 # Flowsheet example
 
-[issues : rows to columns, multiple values per cell, long names, joining ]
+Aim : to summarise EPIC questionnaire results captured from flowsheets.
 
-Aim : to summarise questionnaire results captured from flowsheets.
-
-A questionnaire where we are expecting one answer per patient for each question.
+This example demonstrates summarising a questionnaire where we are expecting one answer per patient for each of a series of question.
 
 Starting with two data extractions from Caboodle.
 
-1. Questionaire results from Flowsheets
+1. Questionnaire results from Flowsheets
 2. Patient demographics
 
-Patient cohort was defined in the data extraction by clinic codes and Patient Durable Keys.
+The patient cohort was defined in the data extraction by clinic codes and Patient Durable Keys.
 
 ## Questionaire results from flowsheets
 
-The flowsheet data are extracted in a long format with question identifiers stored in two columns (note that these may be renamed in the sql extraction) :
+The flowsheet data are extracted by an SQL query. By default data are returned in a 'long' format with question identifiers stored in two columns (note that these may be renamed in the sql extraction) :
 
 * **DisplayName** contains the text on the original form    
 * **Name** contains an identifier that is shorter    
@@ -25,9 +23,9 @@ Values are stored in columns :
 * **Value**
 * **Unit** optional, may not be specified
 
-It can be useful to widen these data so that each question is stored in its own column and the values per patient are stored in rows.
+It can be useful to reformat these data so that each question is stored in its own column and the values per patient are stored in rows.
 
-To do that widening we can use the *pivot_wider* function from dplyr. You need to specify which columns the names, values and identifiers come from.    
+To do that 'widening' we can use the `pivot_wider` function from the package `tidyr`. You need to specify which columns the names, values and identifiers come from.    
 
 You may need to decide whether to use the DisplayName or Name of the FlowsheetRow works better for what you want to do. DisplayName may be too long to provide a good column name, but Name may not give you a clear indication of what the value contains. 
 
@@ -77,8 +75,9 @@ knitr::kable(dfqswide)
 
 [add how to deal with multiple values per patient-question combination either if there is a record-id column or not]
 
-In some cases there can be duplicate values per patient-question combination. This can be because a form was started and not completed for a patient. In that case the warning message from pivot_wider gives an indication of how to detect the duplicates.
+In some cases there can be duplicate values per patient-question combination. This can be because a form was started and not completed for a patient. In that case a warning message from pivot_wider gives an indication of how to detect the duplicates. Duplicate values can also be because the form has been completed multiple times. In that case values of EncounterKey or FlowsheetValueKey can help to identify which row you want.
 
+Many other flowsheet data will contain repeated values per patient. In that case, to get to a single value per patient, you would need to summarise the data first before using pivot_wider.  
 
 
 ## Patient Demographics
@@ -103,3 +102,4 @@ knitr::kable(dfqswidejoin)
 |                 1|no                               |yes                        |         25|Female |
 |                 2|yes                              |no                         |         56|Male   |
 
+One the data have been joined they can be plotted using `ggplot2` or further summarised using `dplyr`.

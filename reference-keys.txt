@@ -9,6 +9,10 @@ r-solutions-for-patient-data
 flowsheet-example
 questionaire-results-from-flowsheets
 patient-demographics
+lymphoma-example
+cancer-staging-data
+oncology-history-data
+to-calculate-the-time-to-relapse-from-remission.
 access-to-health-data-at-uclh---5-safes
 five-safes-at-uclh-overview
 safe-people

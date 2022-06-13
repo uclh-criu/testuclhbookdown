@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 7 Flowsheet example | UCLH Data Science Training Resources</title>
 <meta name="author" content="Andy South">
-<meta name="description" content="[issues : rows to columns, multiple values per cell, long names, joining ] Aim : to summarise questionnaire results captured from flowsheets. A questionnaire where we are expecting one answer per...">
+<meta name="description" content="Aim : to summarise EPIC questionnaire results captured from flowsheets. This example demonstrates summarising a questionnaire where we are expecting one answer per patient for each of a series of...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
 <meta property="og:title" content="Chapter 7 Flowsheet example | UCLH Data Science Training Resources">
 <meta property="og:type" content="book">
-<meta property="og:description" content="[issues : rows to columns, multiple values per cell, long names, joining ] Aim : to summarise questionnaire results captured from flowsheets. A questionnaire where we are expecting one answer per...">
+<meta property="og:description" content="Aim : to summarise EPIC questionnaire results captured from flowsheets. This example demonstrates summarising a questionnaire where we are expecting one answer per patient for each of a series of...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 7 Flowsheet example | UCLH Data Science Training Resources">
-<meta name="twitter:description" content="[issues : rows to columns, multiple values per cell, long names, joining ] Aim : to summarise questionnaire results captured from flowsheets. A questionnaire where we are expecting one answer per...">
+<meta name="twitter:description" content="Aim : to summarise EPIC questionnaire results captured from flowsheets. This example demonstrates summarising a questionnaire where we are expecting one answer per patient for each of a series of...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -54,10 +54,11 @@
 <li class="book-part">R solutions for common issues</li>
 <li><a class="" href="r-solutions-for-patient-data.html"><span class="header-section-number">6</span> R solutions for patient data</a></li>
 <li><a class="active" href="flowsheet-example.html"><span class="header-section-number">7</span> Flowsheet example</a></li>
+<li><a class="" href="lymphoma-example.html"><span class="header-section-number">8</span> Lymphoma example</a></li>
 <li class="book-part">UCLH data guidelines</li>
-<li><a class="" href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">8</span> Access to health data at UCLH - 5 safes</a></li>
-<li><a class="" href="uclh-data-fellows-practical-tips.html"><span class="header-section-number">9</span> UCLH data fellows practical tips</a></li>
-<li><a class="" href="terminology-acronym-dictionary.html"><span class="header-section-number">10</span> Terminology &amp; acronym dictionary</a></li>
+<li><a class="" href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">9</span> Access to health data at UCLH - 5 safes</a></li>
+<li><a class="" href="uclh-data-fellows-practical-tips.html"><span class="header-section-number">10</span> UCLH data fellows practical tips</a></li>
+<li><a class="" href="terminology-acronym-dictionary.html"><span class="header-section-number">11</span> Terminology &amp; acronym dictionary</a></li>
 </ul>
 
         <div class="book-extra">
@@ -69,20 +70,19 @@
 <h1>
 <span class="header-section-number">7</span> Flowsheet example<a class="anchor" aria-label="anchor" href="#flowsheet-example"><i class="fas fa-link"></i></a>
 </h1>
-<p>[issues : rows to columns, multiple values per cell, long names, joining ]</p>
-<p>Aim : to summarise questionnaire results captured from flowsheets.</p>
-<p>A questionnaire where we are expecting one answer per patient for each question.</p>
+<p>Aim : to summarise EPIC questionnaire results captured from flowsheets.</p>
+<p>This example demonstrates summarising a questionnaire where we are expecting one answer per patient for each of a series of question.</p>
 <p>Starting with two data extractions from Caboodle.</p>
 <ol style="list-style-type: decimal">
-<li>Questionaire results from Flowsheets</li>
+<li>Questionnaire results from Flowsheets</li>
 <li>Patient demographics</li>
 </ol>
-<p>Patient cohort was defined in the data extraction by clinic codes and Patient Durable Keys.</p>
+<p>The patient cohort was defined in the data extraction by clinic codes and Patient Durable Keys.</p>
 <div id="questionaire-results-from-flowsheets" class="section level2">
 <h2>
 <span class="header-section-number">7.1</span> Questionaire results from flowsheets<a class="anchor" aria-label="anchor" href="#questionaire-results-from-flowsheets"><i class="fas fa-link"></i></a>
 </h2>
-<p>The flowsheet data are extracted in a long format with question identifiers stored in two columns (note that these may be renamed in the sql extraction) :</p>
+<p>The flowsheet data are extracted by an SQL query. By default data are returned in a ‘long’ format with question identifiers stored in two columns (note that these may be renamed in the sql extraction) :</p>
 <ul>
 <li>
 <strong>DisplayName</strong> contains the text on the original form<br>
@@ -96,8 +96,8 @@
 <li>
 <strong>Unit</strong> optional, may not be specified</li>
 </ul>
-<p>It can be useful to widen these data so that each question is stored in its own column and the values per patient are stored in rows.</p>
-<p>To do that widening we can use the <em>pivot_wider</em> function from dplyr. You need to specify which columns the names, values and identifiers come from.</p>
+<p>It can be useful to reformat these data so that each question is stored in its own column and the values per patient are stored in rows.</p>
+<p>To do that ‘widening’ we can use the <code>pivot_wider</code> function from the package <code>tidyr</code>. You need to specify which columns the names, values and identifiers come from.</p>
 <p>You may need to decide whether to use the DisplayName or Name of the FlowsheetRow works better for what you want to do. DisplayName may be too long to provide a good column name, but Name may not give you a clear indication of what the value contains.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#library(tidyverse)</span>
@@ -174,7 +174,8 @@
 </tbody>
 </table></div>
 <p>[add how to deal with multiple values per patient-question combination either if there is a record-id column or not]</p>
-<p>In some cases there can be duplicate values per patient-question combination. This can be because a form was started and not completed for a patient. In that case the warning message from pivot_wider gives an indication of how to detect the duplicates.</p>
+<p>In some cases there can be duplicate values per patient-question combination. This can be because a form was started and not completed for a patient. In that case a warning message from pivot_wider gives an indication of how to detect the duplicates. Duplicate values can also be because the form has been completed multiple times. In that case values of EncounterKey or FlowsheetValueKey can help to identify which row you want.</p>
+<p>Many other flowsheet data will contain repeated values per patient. In that case, to get to a single value per patient, you would need to summarise the data first before using pivot_wider.</p>
 </div>
 <div id="patient-demographics" class="section level2">
 <h2>
@@ -220,14 +221,13 @@
 </tr>
 </tbody>
 </table></div>
+<p>One the data have been joined they can be plotted using <code>ggplot2</code> or further summarised using <code>dplyr</code>.</p>
+
 </div>
 </div>
-
-
-
   <div class="chapter-nav">
 <div class="prev"><a href="r-solutions-for-patient-data.html"><span class="header-section-number">6</span> R solutions for patient data</a></div>
-<div class="next"><a href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">8</span> Access to health data at UCLH - 5 safes</a></div>
+<div class="next"><a href="lymphoma-example.html"><span class="header-section-number">8</span> Lymphoma example</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -251,7 +251,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>UCLH Data Science Training Resources</strong>" was written by Andy South. It was last built on 2022-06-10.</p>
+    <p>"<strong>UCLH Data Science Training Resources</strong>" was written by Andy South. It was last built on 2022-06-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
