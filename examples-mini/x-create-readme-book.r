@@ -52,7 +52,8 @@ for (i in filenames) {
   
   #try creating link to Github location
   #line1 <- paste0("## [",i,"](https://github.com/uclh-criu/learning-datascience/blob/master/examples-mini/",i,")\n")
-  line1 <- paste0("## [",i,"](https://github.com/andysouth/testuclhbookdown/blob/master/examples-mini/",i,") {-}\n")
+  #line1 <- paste0("## [",i,"](https://github.com/andysouth/testuclhbookdown/blob/master/examples-mini/",i,") {-}\n")
+  line1 <- paste0("## [",i,"](https://github.com/uclh-criu/uclh-data-training/blob/master/examples-mini/",i,") {-}\n")
   
   #extract the 2nd line description from the file  
   line2 <- read_lines(paste0('examples-mini/',i), skip_empty_rows=TRUE, n_max=1, skip=1)
