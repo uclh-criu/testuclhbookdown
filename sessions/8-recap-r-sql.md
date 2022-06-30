@@ -9,7 +9,7 @@ Recap R & SQL for data science fellows
 
 1.  using RStudio direct from UCLH Data Science Desktop
 
-2.  get most recent ‘learning-datascience’ project from Github into
+2.  get most recent ‘uclh-data-training’ project from Github into
     RStudio
 
 3.  run same SQL scripts from both R & dbforge
@@ -76,7 +76,7 @@ Then save that file by selecting File, Save (or Ctrl S). Close the
 
 Restart RStudio.
 
-### 3 get most recent ‘learning-datascience’ project from Github into RStudio
+### 3 get most recent ‘uclh-data-training’ project from Github into RStudio
 
 This is a repeat of the process we went through at the start of the R
 course, but this time we are doing it directly from RStudio in the Data
@@ -89,7 +89,7 @@ Science Desktop.
 ![](../images/00-03-from-git.png)
 
 Copy into first box
-**<https://github.com/uclh-criu/learning-datascience>**
+**<https://github.com/uclh-criu/uclh-data-training>**
 ![](../images/00-04-git-url.png)
 
 You may need to press ‘Browse’ to help it find where to save the
@@ -111,7 +111,7 @@ query in dbForge and then run it from R.
 We will use the same decovid-omop database and similar queries that we
 experimented with in the SQL course.
 
-In the `learning-datascience` RStudio project, navigate to the folder
+In the `uclh-data-training` RStudio project, navigate to the folder
 `database-use` in the files explorer in the lower right panel of
 RStudio.
 
@@ -152,4 +152,4 @@ An Rstudio project is a folder than can contain both code and data files
 and has a `.Rproj` file that saves your settings.
 
 To create a new RStudio project, click : File, New project, New
-directory, New project, & type in a name, e.g. my-first-project.
+directory, New project, & type in a name, e.g. my-first-project.

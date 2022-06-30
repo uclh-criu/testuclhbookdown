@@ -7,7 +7,7 @@ Recap dplyr & ggplot2 for data science fellows
 
 **Overall : recap data manipulation & plotting in R**
 
-1.  \[repeat from last session\] get most recent ‘learning-datascience’
+1.  \[repeat from last session\] get most recent ‘uclh-data-training’
     project from Github into RStudio
 
 2.  create new RStudio project for own work

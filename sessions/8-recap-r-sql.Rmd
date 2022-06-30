@@ -13,7 +13,7 @@ output: github_document
 
 1. using RStudio direct from UCLH Data Science Desktop
 
-2. get most recent ‘learning-datascience’ project from Github into RStudio
+2. get most recent ‘uclh-data-training’ project from Github into RStudio
 
 3. run same SQL scripts from both R & dbforge
 
@@ -71,7 +71,7 @@ Then save that file by selecting File, Save (or Ctrl S). Close the .Renviron tab
 Restart RStudio.
 
 
-### 3 get most recent ‘learning-datascience’ project from Github into RStudio
+### 3 get most recent ‘uclh-data-training’ project from Github into RStudio
 
 This is a repeat of the process we went through at the start of the R course, but this time we are doing it directly from RStudio in the Data Science Desktop.
 
@@ -84,7 +84,7 @@ This is a repeat of the process we went through at the start of the R course, bu
 
 ![](../images/00-03-from-git.png)
 
-Copy into first box **https://github.com/uclh-criu/learning-datascience**
+Copy into first box **https://github.com/uclh-criu/uclh-data-training**
 ![](../images/00-04-git-url.png)
 
 You may need to press 'Browse' to help it find where to save the project.

@@ -144,7 +144,7 @@ If you are learning independently follow the steps in these slides.
 
 ![](../images/00-03-from-git.png)
 
-## Copy into first box **https://github.com/uclh-criu/learning-datascience**
+## Copy into first box **https://github.com/uclh-criu/uclh-data-training**
 ![](../images/00-04-git-url.png)
 
 ## may take a while to copy files.

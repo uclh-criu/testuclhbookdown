@@ -5,13 +5,12 @@ output: github_document
 
 ---
 
-# Working session 2021-12-06
 
 ## Objectives
 
 **Overall : recap data manipulation & plotting in R**
 
-1. [repeat from last session] get most recent ‘learning-datascience’ project from Github into RStudio
+1. [repeat from last session] get most recent ‘uclh-data-training’ project from Github into RStudio
 
 2. create new RStudio project for own work
 
