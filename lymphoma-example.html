@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 8 Lymphoma example | UCLH Data Science Training Resources</title>
+<title>Chapter 9 Lymphoma example | UCLH Data Science Training Resources</title>
 <meta name="author" content="Andy South">
 <meta name="description" content="A walk through of steps taken to analyse some Lymphoma data. The broad aim was to look at relapse and survival for different types of Lymphoma related to the stage at initial diagnosis. Starting...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Chapter 8 Lymphoma example | UCLH Data Science Training Resources">
+<meta property="og:title" content="Chapter 9 Lymphoma example | UCLH Data Science Training Resources">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://uclh-criu.github.io/uclh-data-training/lymphoma-example.html">
 <meta property="og:description" content="A walk through of steps taken to analyse some Lymphoma data. The broad aim was to look at relapse and survival for different types of Lymphoma related to the stage at initial diagnosis. Starting...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 8 Lymphoma example | UCLH Data Science Training Resources">
+<meta name="twitter:title" content="Chapter 9 Lymphoma example | UCLH Data Science Training Resources">
 <meta name="twitter:description" content="A walk through of steps taken to analyse some Lymphoma data. The broad aim was to look at relapse and survival for different types of Lymphoma related to the stage at initial diagnosis. Starting...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -46,20 +46,21 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome to the UCLH Data Science Fellows program</a></li>
 <li><a class="" href="data-at-uclh.html"><span class="header-section-number">1</span> Data at UCLH</a></li>
+<li><a class="" href="uclh-fellowship-activities.html"><span class="header-section-number">2</span> UCLH fellowship activities</a></li>
 <li class="book-part">Two day intro to R course</li>
-<li><a class="" href="initial-instructions.html"><span class="header-section-number">2</span> Initial instructions</a></li>
-<li><a class="" href="course-materials.html"><span class="header-section-number">3</span> Course materials</a></li>
-<li><a class="" href="other-sources-r-health-help.html"><span class="header-section-number">4</span> Other sources R health help</a></li>
+<li><a class="" href="initial-instructions.html"><span class="header-section-number">3</span> Initial instructions</a></li>
+<li><a class="" href="course-materials.html"><span class="header-section-number">4</span> Course materials</a></li>
+<li><a class="" href="other-sources-r-health-help.html"><span class="header-section-number">5</span> Other sources R health help</a></li>
 <li class="book-part">Intro to SQL</li>
-<li><a class="" href="sql.html"><span class="header-section-number">5</span> SQL</a></li>
+<li><a class="" href="sql.html"><span class="header-section-number">6</span> SQL</a></li>
 <li class="book-part">R solutions for common issues</li>
-<li><a class="" href="r-solutions-for-patient-data.html"><span class="header-section-number">6</span> R solutions for patient data</a></li>
-<li><a class="" href="flowsheet-example.html"><span class="header-section-number">7</span> Flowsheet example</a></li>
-<li><a class="active" href="lymphoma-example.html"><span class="header-section-number">8</span> Lymphoma example</a></li>
+<li><a class="" href="r-solutions-for-patient-data.html"><span class="header-section-number">7</span> R solutions for patient data</a></li>
+<li><a class="" href="flowsheet-example.html"><span class="header-section-number">8</span> Flowsheet example</a></li>
+<li><a class="active" href="lymphoma-example.html"><span class="header-section-number">9</span> Lymphoma example</a></li>
 <li class="book-part">UCLH data guidelines</li>
-<li><a class="" href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">9</span> Access to health data at UCLH - 5 safes</a></li>
-<li><a class="" href="uclh-data-fellows-practical-tips.html"><span class="header-section-number">10</span> UCLH data fellows practical tips</a></li>
-<li><a class="" href="terminology-acronym-dictionary.html"><span class="header-section-number">11</span> Terminology &amp; acronym dictionary</a></li>
+<li><a class="" href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">10</span> Access to health data at UCLH - 5 safes</a></li>
+<li><a class="" href="uclh-data-fellows-practical-tips.html"><span class="header-section-number">11</span> UCLH data fellows practical tips</a></li>
+<li><a class="" href="terminology-acronym-dictionary.html"><span class="header-section-number">12</span> Terminology &amp; acronym dictionary</a></li>
 </ul>
 
         <div class="book-extra">
@@ -69,7 +70,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="lymphoma-example" class="section level1">
 <h1>
-<span class="header-section-number">8</span> Lymphoma example<a class="anchor" aria-label="anchor" href="#lymphoma-example"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9</span> Lymphoma example<a class="anchor" aria-label="anchor" href="#lymphoma-example"><i class="fas fa-link"></i></a>
 </h1>
 <p>A walk through of steps taken to analyse some Lymphoma data.</p>
 <p>The broad aim was to look at relapse and survival for different types of Lymphoma related to the stage at initial diagnosis.</p>
@@ -80,7 +81,7 @@
 </ol>
 <div id="cancer-staging-data" class="section level2">
 <h2>
-<span class="header-section-number">8.1</span> cancer staging data<a class="anchor" aria-label="anchor" href="#cancer-staging-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1</span> cancer staging data<a class="anchor" aria-label="anchor" href="#cancer-staging-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>The cancer staging form data also contains fields from Patient and Problem List tables joined by the original sql extraction.</p>
 <p>We wanted to get to one row per patient with the stage at initial diagnosis.</p>
@@ -142,7 +143,7 @@
 </div>
 <div id="oncology-history-data" class="section level2">
 <h2>
-<span class="header-section-number">8.2</span> oncology history data<a class="anchor" aria-label="anchor" href="#oncology-history-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2</span> oncology history data<a class="anchor" aria-label="anchor" href="#oncology-history-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Oncology history has a series of events classified by Event_Category.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -183,7 +184,7 @@
             progression<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Event_Category</span><span class="op">==</span><span class="st">"Progression"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div id="to-calculate-the-time-to-relapse-from-remission." class="section level3">
 <h3>
-<span class="header-section-number">8.2.1</span> To calculate the time to relapse from remission.<a class="anchor" aria-label="anchor" href="#to-calculate-the-time-to-relapse-from-remission."><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2.1</span> To calculate the time to relapse from remission.<a class="anchor" aria-label="anchor" href="#to-calculate-the-time-to-relapse-from-remission."><i class="fas fa-link"></i></a>
 </h3>
 <p>This filters events that indicate remission or relapse, orders them for each patient and calculates the time from each event to the next one.
 Then for each patient it checks whether a relapse event occurs immediately after a remission one. It classifies survival in a way that can later be used in a Kaplan Meier survival plot using the survminer package.</p>
@@ -223,15 +224,15 @@ Then for each patient it checks whether a relapse event occurs immediately after
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="flowsheet-example.html"><span class="header-section-number">7</span> Flowsheet example</a></div>
-<div class="next"><a href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">9</span> Access to health data at UCLH - 5 safes</a></div>
+<div class="prev"><a href="flowsheet-example.html"><span class="header-section-number">8</span> Flowsheet example</a></div>
+<div class="next"><a href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">10</span> Access to health data at UCLH - 5 safes</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#lymphoma-example"><span class="header-section-number">8</span> Lymphoma example</a></li>
-<li><a class="nav-link" href="#cancer-staging-data"><span class="header-section-number">8.1</span> cancer staging data</a></li>
+<li><a class="nav-link" href="#lymphoma-example"><span class="header-section-number">9</span> Lymphoma example</a></li>
+<li><a class="nav-link" href="#cancer-staging-data"><span class="header-section-number">9.1</span> cancer staging data</a></li>
 <li>
-<a class="nav-link" href="#oncology-history-data"><span class="header-section-number">8.2</span> oncology history data</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#to-calculate-the-time-to-relapse-from-remission."><span class="header-section-number">8.2.1</span> To calculate the time to relapse from remission.</a></li></ul>
+<a class="nav-link" href="#oncology-history-data"><span class="header-section-number">9.2</span> oncology history data</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#to-calculate-the-time-to-relapse-from-remission."><span class="header-section-number">9.2.1</span> To calculate the time to relapse from remission.</a></li></ul>
 </li>
 </ul>
 
@@ -250,7 +251,7 @@ Then for each patient it checks whether a relapse event occurs immediately after
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>UCLH Data Science Training Resources</strong>" was written by Andy South. It was last built on 2022-06-30.</p>
+    <p>"<strong>UCLH Data Science Training Resources</strong>" was written by Andy South. It was last built on 2022-07-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

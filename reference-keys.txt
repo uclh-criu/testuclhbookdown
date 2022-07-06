@@ -3,11 +3,16 @@ caboodle-and-clarity
 omop
 emap
 other
+uclh-fellowship-activities
 initial-instructions
 online-platforms-logins
 in-case-you-also-want-to-install-r-on-a-personal-computer
 course-materials
 other-sources-r-health-help
+online-communities
+training-resources
+books
+r-packages
 sql
 r-solutions-for-patient-data
 flowsheet-example

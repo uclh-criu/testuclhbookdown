@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 7 Flowsheet example | UCLH Data Science Training Resources</title>
+<title>Chapter 8 Flowsheet example | UCLH Data Science Training Resources</title>
 <meta name="author" content="Andy South">
 <meta name="description" content="Aim : to summarise EPIC questionnaire results captured from flowsheets. This example demonstrates summarising a questionnaire where we are expecting one answer per patient for each of a series of...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Chapter 7 Flowsheet example | UCLH Data Science Training Resources">
+<meta property="og:title" content="Chapter 8 Flowsheet example | UCLH Data Science Training Resources">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://uclh-criu.github.io/uclh-data-training/flowsheet-example.html">
 <meta property="og:description" content="Aim : to summarise EPIC questionnaire results captured from flowsheets. This example demonstrates summarising a questionnaire where we are expecting one answer per patient for each of a series of...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 7 Flowsheet example | UCLH Data Science Training Resources">
+<meta name="twitter:title" content="Chapter 8 Flowsheet example | UCLH Data Science Training Resources">
 <meta name="twitter:description" content="Aim : to summarise EPIC questionnaire results captured from flowsheets. This example demonstrates summarising a questionnaire where we are expecting one answer per patient for each of a series of...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -46,20 +46,21 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome to the UCLH Data Science Fellows program</a></li>
 <li><a class="" href="data-at-uclh.html"><span class="header-section-number">1</span> Data at UCLH</a></li>
+<li><a class="" href="uclh-fellowship-activities.html"><span class="header-section-number">2</span> UCLH fellowship activities</a></li>
 <li class="book-part">Two day intro to R course</li>
-<li><a class="" href="initial-instructions.html"><span class="header-section-number">2</span> Initial instructions</a></li>
-<li><a class="" href="course-materials.html"><span class="header-section-number">3</span> Course materials</a></li>
-<li><a class="" href="other-sources-r-health-help.html"><span class="header-section-number">4</span> Other sources R health help</a></li>
+<li><a class="" href="initial-instructions.html"><span class="header-section-number">3</span> Initial instructions</a></li>
+<li><a class="" href="course-materials.html"><span class="header-section-number">4</span> Course materials</a></li>
+<li><a class="" href="other-sources-r-health-help.html"><span class="header-section-number">5</span> Other sources R health help</a></li>
 <li class="book-part">Intro to SQL</li>
-<li><a class="" href="sql.html"><span class="header-section-number">5</span> SQL</a></li>
+<li><a class="" href="sql.html"><span class="header-section-number">6</span> SQL</a></li>
 <li class="book-part">R solutions for common issues</li>
-<li><a class="" href="r-solutions-for-patient-data.html"><span class="header-section-number">6</span> R solutions for patient data</a></li>
-<li><a class="active" href="flowsheet-example.html"><span class="header-section-number">7</span> Flowsheet example</a></li>
-<li><a class="" href="lymphoma-example.html"><span class="header-section-number">8</span> Lymphoma example</a></li>
+<li><a class="" href="r-solutions-for-patient-data.html"><span class="header-section-number">7</span> R solutions for patient data</a></li>
+<li><a class="active" href="flowsheet-example.html"><span class="header-section-number">8</span> Flowsheet example</a></li>
+<li><a class="" href="lymphoma-example.html"><span class="header-section-number">9</span> Lymphoma example</a></li>
 <li class="book-part">UCLH data guidelines</li>
-<li><a class="" href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">9</span> Access to health data at UCLH - 5 safes</a></li>
-<li><a class="" href="uclh-data-fellows-practical-tips.html"><span class="header-section-number">10</span> UCLH data fellows practical tips</a></li>
-<li><a class="" href="terminology-acronym-dictionary.html"><span class="header-section-number">11</span> Terminology &amp; acronym dictionary</a></li>
+<li><a class="" href="access-to-health-data-at-uclh---5-safes.html"><span class="header-section-number">10</span> Access to health data at UCLH - 5 safes</a></li>
+<li><a class="" href="uclh-data-fellows-practical-tips.html"><span class="header-section-number">11</span> UCLH data fellows practical tips</a></li>
+<li><a class="" href="terminology-acronym-dictionary.html"><span class="header-section-number">12</span> Terminology &amp; acronym dictionary</a></li>
 </ul>
 
         <div class="book-extra">
@@ -69,7 +70,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="flowsheet-example" class="section level1">
 <h1>
-<span class="header-section-number">7</span> Flowsheet example<a class="anchor" aria-label="anchor" href="#flowsheet-example"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8</span> Flowsheet example<a class="anchor" aria-label="anchor" href="#flowsheet-example"><i class="fas fa-link"></i></a>
 </h1>
 <p>Aim : to summarise EPIC questionnaire results captured from flowsheets.</p>
 <p>This example demonstrates summarising a questionnaire where we are expecting one answer per patient for each of a series of question.</p>
@@ -81,7 +82,7 @@
 <p>The patient cohort was defined in the data extraction by clinic codes and Patient Durable Keys.</p>
 <div id="questionaire-results-from-flowsheets" class="section level2">
 <h2>
-<span class="header-section-number">7.1</span> Questionaire results from flowsheets<a class="anchor" aria-label="anchor" href="#questionaire-results-from-flowsheets"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.1</span> Questionaire results from flowsheets<a class="anchor" aria-label="anchor" href="#questionaire-results-from-flowsheets"><i class="fas fa-link"></i></a>
 </h2>
 <p>The flowsheet data are extracted by an SQL query. By default data are returned in a ‘long’ format with question identifiers stored in two columns (note that these may be renamed in the sql extraction) :</p>
 <ul>
@@ -180,7 +181,7 @@
 </div>
 <div id="patient-demographics" class="section level2">
 <h2>
-<span class="header-section-number">7.2</span> Patient Demographics<a class="anchor" aria-label="anchor" href="#patient-demographics"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.2</span> Patient Demographics<a class="anchor" aria-label="anchor" href="#patient-demographics"><i class="fas fa-link"></i></a>
 </h2>
 <p>Patient demographics may be provided in a separate table extracted from Caboodle, also with a PatientDurableKey. The shared column can be used to join the two tables together to allow answers to be summarised by demographics.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -227,14 +228,14 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="r-solutions-for-patient-data.html"><span class="header-section-number">6</span> R solutions for patient data</a></div>
-<div class="next"><a href="lymphoma-example.html"><span class="header-section-number">8</span> Lymphoma example</a></div>
+<div class="prev"><a href="r-solutions-for-patient-data.html"><span class="header-section-number">7</span> R solutions for patient data</a></div>
+<div class="next"><a href="lymphoma-example.html"><span class="header-section-number">9</span> Lymphoma example</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#flowsheet-example"><span class="header-section-number">7</span> Flowsheet example</a></li>
-<li><a class="nav-link" href="#questionaire-results-from-flowsheets"><span class="header-section-number">7.1</span> Questionaire results from flowsheets</a></li>
-<li><a class="nav-link" href="#patient-demographics"><span class="header-section-number">7.2</span> Patient Demographics</a></li>
+<li><a class="nav-link" href="#flowsheet-example"><span class="header-section-number">8</span> Flowsheet example</a></li>
+<li><a class="nav-link" href="#questionaire-results-from-flowsheets"><span class="header-section-number">8.1</span> Questionaire results from flowsheets</a></li>
+<li><a class="nav-link" href="#patient-demographics"><span class="header-section-number">8.2</span> Patient Demographics</a></li>
 </ul>
 
       <div class="book-extra">
@@ -252,7 +253,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>UCLH Data Science Training Resources</strong>" was written by Andy South. It was last built on 2022-06-30.</p>
+    <p>"<strong>UCLH Data Science Training Resources</strong>" was written by Andy South. It was last built on 2022-07-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -1,7 +1,7 @@
 --- 
 title: "UCLH Data Science Training Resources"
 author: "Andy South"
-date: "2022-06-30"
+date: "2022-07-06"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -21,16 +21,8 @@ These resources are part of a UCLH fellowship program developing the capacity of
 
 
 
+   
 
-Proposed timeline for fellowship training activities.
-
-Date    | Activity
- ----   | ---------
-August  | Intro to R & good data practice - 2 day course
-...     | 
-...     | Outline of data in UCLH
-...     | intro to SQL
-...     | R for common data manipulation activities in UCLH
 
 
 
